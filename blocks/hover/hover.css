@@ -1,4 +1,3 @@
 .hover:hover {
-  cursor: pointer;
-  Opacity: 80%;
+  opacity: 60%;
 }

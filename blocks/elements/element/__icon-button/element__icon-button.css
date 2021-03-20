@@ -8,5 +8,6 @@
   align-self: center;
   margin-left: auto;
   outline: none;
-  cursor:pointer
+  cursor:pointer;
+  background-repeat: no-repeat;
 }

@@ -8,6 +8,7 @@
   border: solid 1px #E5E5E5;
   align-self: flex-end;
   margin-left: 2px;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1280px) {

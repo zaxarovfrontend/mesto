@@ -8,13 +8,13 @@
   background-image: url(../../../images/Картинка\ плюс.png);
   margin: 0;
   border-radius: 1%;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1280px) {
   .profile__add-button {
     width: 150px;
     margin-left: auto;
-    background-image: url(../../../images/Vector\ 1280.png);
-    
+    background-image: url(../../../images/Vector\ 1280.png); 
   }
 }
