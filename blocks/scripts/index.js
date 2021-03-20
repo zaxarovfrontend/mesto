@@ -1,10 +1,10 @@
 
 let popup = document.querySelector('.popup');
-let openpopupbtn = document.querySelector('.profile__edit-button');
+let openPopupBtn = document.querySelector('.profile__edit-button');
 /* Переменая крестик закрытия */
-let closepopupbtn = popup.querySelector('.popup__close-button');
+let closePopupBtn = popup.querySelector('.popup__close-button');
 /* Переменая для контейнера с формой */
-let popupcontainer = popup.querySelector('.popup__container');
+let popupСontainer = popup.querySelector('.popup__container');
 
 
 /* действие открытие модального окна */
@@ -19,8 +19,10 @@ function closePopup() {
 }
 
 /* Кнопка "редактировать" открывает модалку */
-openpopupbtn.addEventListener('click', openPopup);
+openPopupBtn.addEventListener('click', openPopup);
+
 /* Кнопка "крестик" (закрыть модалку) */
+closePopupBtn.addEventListener('click', closePopup);
 
 
 
