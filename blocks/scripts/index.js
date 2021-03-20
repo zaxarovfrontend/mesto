@@ -21,7 +21,6 @@ function closePopup() {
 /* Кнопка "редактировать" открывает модалку */
 openpopupbtn.addEventListener('click', openPopup);
 /* Кнопка "крестик" (закрыть модалку) */
-closepopupbtn.addEventListener('click', closePopup);
 
 
 
