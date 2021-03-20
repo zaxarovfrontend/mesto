@@ -1,0 +1,16 @@
+.profile {
+  min-width: 282px;
+  padding: 42px 19px 32px 19px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .profile {
+    min-width: 880px;
+    padding: 6px 200px 37px 200px;
+    flex-direction: row;
+    
+  }
+}

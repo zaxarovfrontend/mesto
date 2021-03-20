@@ -1,0 +1,12 @@
+.element__icon-button {
+  background-image: url(../../../../images/лайк\ 1.png);
+  width: 22px;
+  height: 19px;
+  background-position: center;
+  border: hidden;
+  background-color:white;
+  align-self: center;
+  margin-left: auto;
+  outline: none;
+  cursor:pointer
+}

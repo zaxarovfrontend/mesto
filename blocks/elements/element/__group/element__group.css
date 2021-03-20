@@ -1,0 +1,7 @@
+.element__group {
+  background-color: #ffffff;
+  min-width: 282px;
+  border-radius: 3%;
+  overflow: hidden;
+  justify-content: center;
+}
