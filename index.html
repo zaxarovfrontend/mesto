@@ -1,106 +1,105 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Mesto</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto</title>
-</head>
-
-<body class="body">
-  <div class="popup">
-    <div class="popup__overlay"></div>
-    <form class="popup__container">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" name="name-input" class="popup__input" placeholder="Жак-Ив Кусто">
-      <input type="text" name="job-input" class="popup__input" placeholder="Исследователь океана">
-      <button type="submit" class="popup__submit-button hover">Cохранить</button>
-      <button type="button" class="popup__close-button hover">+</button>
-    </form>
+  <body class="body">
+    <div class="popup">
+      <div class="popup__overlay"></div>
+      <form class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" name="name-input" class="popup__input" placeholder="Жак-Ив Кусто" />
+        <input type="text" name="job-input" class="popup__input" placeholder="Исследователь океана" />
+        <button type="submit" class="popup__submit-button hover">Cохранить</button>
+        <button type="button" class="popup__close-button hover">+</button>
+      </form>
     </div>
-  <div class="page">
-    <!--Блок 1 Header-->
-    <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="логотип">
-    </header>
-    <!--Блок 2 Profile-->
-    <main class="content">
-      <section class="profile">
-        <img class="profile__avatar" src="./images/avaterKusto.jpg" alt="фото Кусто">
-      <div class="profile__info">
-       <div class="profile__webinfo">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-       <button type="button" class="profile__edit-button"></button>
-      </div>
-       <p class="profile__text">Исследователь океана</p>
-      </div>
-       <button type="button" class="profile__add-button hover"></button>
-    </section>
-   <!--Блок 2 elements-->
-  <section class="elements">
-      <!--< Карачаево--> 
-  <article class="element">
-      <div class="element__group">
-        <img src="./images/Karachaevo.jpg" alt="Картинка Карачаево" class="element__image">
-      <div class="element__group-container">
-       <h2 class="element__title">Карачаево-Черкессия</h2>
-       <button type="button" class="element__icon-button"></button>
-      </div>
-      </div>
-    </article>
-    <article class="element">
-      <div class="element__group">
-        <img src="./images/Elbrus.jpg" alt="Картинка Гора Эльбрус" class="element__image">
-      <div class="element__group-container">
-       <h2 class="element__title">Гора Эльбрус</h2>
-       <button type="button" class="element__icon-button"></button>
-      </div>
-      </div>
-    </article>
-    <article class="element">
-      <div class="element__group">
-        <img src="./images/Domdai.jpg" alt="Картинка Домбай" class="element__image">
-      <div class="element__group-container">
-       <h2 class="element__title">Домбай</h2>
-       <button type="button" class="element__icon-button"></button>
-      </div>
-      </div>
-    </article>
-    <article class="element">
-      <div class="element__group">
-        <img src="./images/Elbrus.jpg" alt="Картинка Гора Эльбрус" class="element__image">
-      <div class="element__group-container">
-       <h2 class="element__title">Гора Эльбрус</h2>
-       <button type="button" class="element__icon-button"></button>
-      </div>
-      </div>
-    </article>
-    <article class="element">
-      <div class="element__group">
-        <img src="./images/Domdai.jpg" alt="Картинка Домбай" class="element__image">
-      <div class="element__group-container">
-       <h2 class="element__title">Домбай</h2>
-       <button type="button" class="element__icon-button"></button>
-      </div>
-      </div>
-    </article>
-    <article class="element">
-      <div class="element__group">
-        <img src="./images/Karachaevo.jpg" alt="Картинка Карачаевск" class="element__image">
-      <div class="element__group-container">
-       <h2 class="element__title">Карачаево-Черкессия</h2>
-       <button type="button" class="element__icon-button"></button>
-      </div>
-      </div>
-    </article>
-    </section>
-   </main>
-    <!-- Подвал-->
-   <footer class="footer">
-    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-   </footer>
-  </div>
-  <script src = "./scripts/index.js"></script>
-</body>
+    <div class="page">
+      <!--Блок 1 Header-->
+      <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="логотип" />
+      </header>
+      <!--Блок 2 Profile-->
+      <main class="content">
+        <section class="profile">
+          <img class="profile__avatar" src="./images/avaterKusto.jpg" alt="фото Кусто" />
+          <div class="profile__info">
+            <div class="profile__webinfo">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button type="button" class="profile__edit-button"></button>
+            </div>
+            <p class="profile__text">Исследователь океана</p>
+          </div>
+          <button type="button" class="profile__add-button hover"></button>
+        </section>
+        <!--Блок 2 elements-->
+        <section class="elements">
+          <!--< Карачаево-->
+          <article class="element">
+            <div class="element__group">
+              <img src="./images/Karachaevo.jpg" alt="Картинка Карачаево" class="element__image" />
+              <div class="element__group-container">
+                <h2 class="element__title">Карачаево-Черкессия</h2>
+                <button type="button" class="element__icon-button"></button>
+              </div>
+            </div>
+          </article>
+          <article class="element">
+            <div class="element__group">
+              <img src="./images/Elbrus.jpg" alt="Картинка Гора Эльбрус" class="element__image" />
+              <div class="element__group-container">
+                <h2 class="element__title">Гора Эльбрус</h2>
+                <button type="button" class="element__icon-button"></button>
+              </div>
+            </div>
+          </article>
+          <article class="element">
+            <div class="element__group">
+              <img src="./images/Domdai.jpg" alt="Картинка Домбай" class="element__image" />
+              <div class="element__group-container">
+                <h2 class="element__title">Домбай</h2>
+                <button type="button" class="element__icon-button"></button>
+              </div>
+            </div>
+          </article>
+          <article class="element">
+            <div class="element__group">
+              <img src="./images/Elbrus.jpg" alt="Картинка Гора Эльбрус" class="element__image" />
+              <div class="element__group-container">
+                <h2 class="element__title">Гора Эльбрус</h2>
+                <button type="button" class="element__icon-button"></button>
+              </div>
+            </div>
+          </article>
+          <article class="element">
+            <div class="element__group">
+              <img src="./images/Domdai.jpg" alt="Картинка Домбай" class="element__image" />
+              <div class="element__group-container">
+                <h2 class="element__title">Домбай</h2>
+                <button type="button" class="element__icon-button"></button>
+              </div>
+            </div>
+          </article>
+          <article class="element">
+            <div class="element__group">
+              <img src="./images/Karachaevo.jpg" alt="Картинка Карачаевск" class="element__image" />
+              <div class="element__group-container">
+                <h2 class="element__title">Карачаево-Черкессия</h2>
+                <button type="button" class="element__icon-button"></button>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+      <!-- Подвал-->
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      </footer>
+    </div>
+    <script src="./scripts/index.js"></script>
+  </body>
 </html>
