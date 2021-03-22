@@ -4,20 +4,17 @@
   height: 27px;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.popup__input::placeholder {
+  font-size: 14px;
+  line-height: 18px;
   color: black;
-  font-family: "Inter";
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
 }
+
 
 @media screen and (min-width: 1280px) {
   .popup__input {
     width: 358px;
-    margin-bottom: 24px;
+    margin-bottom: 25px;
   }
 }
