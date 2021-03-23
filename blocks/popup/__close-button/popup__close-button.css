@@ -1,21 +1,22 @@
 .popup__close-button {
-  transform: rotate(-45deg);
   border: 0;
-  color: white;
   position: absolute;
-  left: 85%;
-  top: -20%;
-  background-color: rgba(0, 0, 0, 0);
-  font-size: 49px;
-  outline: none;
+  left: 90%;
+  top: -14%;
+  width: 26px;
+  height: 26px;
   cursor: pointer;
+  background-image: url(../../../images/CloseIcon.svg);
+  background-position: center;
+  background-color: transparent;
+  outline:none;
 }
 
 
 @media screen and (min-width: 1280px) {
   .popup__close-button {
-    font-size: 77px;
-    left: 96%;
-    top: -21%;
+    left: 101%;
+    top: -11%;
+    background-size: 53px;
 }
 }

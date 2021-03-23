@@ -1,5 +1,5 @@
 @media screen and (min-width: 1280px) {
-  .elements {
+  .cards {
    min-width: 880px;
    display: grid;
    grid-template-columns: repeat(3, 282px);

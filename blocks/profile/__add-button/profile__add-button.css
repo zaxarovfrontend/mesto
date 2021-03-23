@@ -5,16 +5,17 @@
   background-repeat: no-repeat;
   background-position: center;
   border: solid 2px white;
-  background-image: url(../../../images/imageplus.png);
+  background-image: url(../../../images/plusbuttonimage.svg);
   margin: 0;
   border-radius: 1%;
   cursor: pointer;
+  background-size: 17px;
 }
 
 @media screen and (min-width: 1280px) {
   .profile__add-button {
     width: 150px;
     margin-left: auto;
-    background-image: url(../../../images/imageplus.png); 
+    background-size: 20px;
   }
 }

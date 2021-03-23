@@ -17,29 +17,28 @@ let newProfileText = document.querySelector('.profile__text');
 
 /* действие открытие модального окна */
 function openPopup() {
-  popup.classList.add('popup_opened')
-  nameInput.value =  newProfileTitle.textContent 
-  jobInput.value = newProfileText.textContent
+  popup.classList.add('popup_opened');
+  nameInput.value =  newProfileTitle.textContent;
+  jobInput.value = newProfileText.textContent;
 }
 
 
 /* действие закрытие модального окна */
 function closePopup() {
-  popup.classList.remove('popup_opened')
+  popup.classList.remove('popup_opened');
+}
+
+/* функция с обработчиком кнопки */
+function formSubmitHandler (evt) {
+  evt.preventDefault();   
+  newProfileTitle.textContent = nameInput.value;
+  newProfileText.textContent = jobInput.value; 
+  closePopup();                            
 }
 
 /* Кнопка "редактировать" открывает модалку */
 openPopupBtn.addEventListener('click', openPopup);
-
 /* Кнопка "крестик" (закрыть модалку) */
 closePopupBtn.addEventListener('click', closePopup);
-
-/* фенкция с обработчиком кнопки */
-function formSubmitHandler (evt) {
-  evt.preventDefault();   
-  newProfileTitle.textContent = nameInput.value 
-  newProfileText.textContent = jobInput.value   
-  closePopup();                            
-}
 
 popupСontainer.addEventListener('submit', formSubmitHandler);
