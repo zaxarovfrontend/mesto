@@ -32,6 +32,7 @@
           <article class="card">
             <div class="card__group">
               <img src="./images/Karachaevo.jpg" alt="Картинка Карачаево" class="card__image" />
+              <button class="card__delete"></button>
               <div class="card__group-container">
                 <h2 class="card__title">Карачаево-Черкессия</h2>
                 <button type="button" class="card__like-button"></button>
@@ -41,6 +42,7 @@
           <article class="card">
             <div class="card__group">
               <img src="./images/Elbrus.jpg" alt="Картинка Гора Эльбрус" class="card__image" />
+              <button class="card__delete"></button>
               <div class="card__group-container">
                 <h2 class="card__title">Гора Эльбрус</h2>
                 <button type="button" class="card__like-button"></button>
@@ -50,6 +52,7 @@
           <article class="card">
             <div class="card__group">
               <img src="./images/Domdai.jpg" alt="Картинка Домбай" class="card__image" />
+              <button class="card__delete"></button>
               <div class="card__group-container">
                 <h2 class="card__title">Домбай</h2>
                 <button type="button" class="card__like-button"></button>
@@ -59,6 +62,7 @@
           <article class="card">
             <div class="card__group">
               <img src="./images/Elbrus.jpg" alt="Картинка Гора Эльбрус" class="card__image" />
+              <button class="card__delete"></button>
               <div class="card__group-container">
                 <h2 class="card__title">Гора Эльбрус</h2>
                 <button type="button" class="card__like-button"></button>
@@ -68,6 +72,7 @@
           <article class="card">
             <div class="card__group">
               <img src="./images/Domdai.jpg" alt="Картинка Домбай" class="card__image" />
+              <button class="card__delete"></button>
               <div class="card__group-container">
                 <h2 class="card__title">Домбай</h2>
                 <button type="button" class="card__like-button"></button>
@@ -77,6 +82,7 @@
           <article class="card">
             <div class="card__group">
               <img src="./images/Karachaevo.jpg" alt="Картинка Карачаевск" class="card__image" />
+              <button class="card__delete"></button>
               <div class="card__group-container">
                 <h2 class="card__title">Карачаево-Черкессия</h2>
                 <button type="button" class="card__like-button"></button>
@@ -90,6 +96,21 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
     </div>
+
+    <!-- Карточка card-->
+    <template class="card-template">
+      <article class="card">
+        <div class="card__group">
+          <img src="./images/Domdai.jpg" alt="Картинка Домбай" class="card__image" />
+          <button class="card__delete"></button>
+          <div class="card__group-container">
+            <h2 class="card__title">Домбай</h2>
+            <button type="button" class="card__like-button"></button>
+          </div>
+        </div>
+      </article>
+    </template>
+   <!-- popup 1-->
     <article class="popup">
       <div class="popup__overlay"></div>
       <form name="form-container" class="popup__container">
@@ -97,7 +118,29 @@
         <input type="text" name="name-input" class="popup__input" placeholder="Жак-Ив Кусто" />
         <input type="text" name="job-input" class="popup__input" placeholder="Исследователь океана" />
         <button type="submit" class="popup__submit-button hover">Cохранить</button>
-        <button type="button" class="popup__close-button hover"></button>
+        <button type="button" class="popup__close-button popup__close-button_type_edit hover"></button>
+      </form>
+    </article>
+   <!-- popup 2-->
+    <article class="popup popup_type_add">
+      <div class="popup__overlay"></div>
+      <form name="form-container" class="popup__container popup__container_add">
+        <h2 class="popup__title popup__title_style">Новая карточка</h2>
+        <input type="text" name="title" class="popup__input" placeholder="Название"/>
+        <input type="url" name="link" class="popup__input" placeholder="Ссылка на картинку"/>
+        <button type="submit" class="popup__submit-button popup__submit-button_style hover">Cоздать</button>
+        <button type="button" class="popup__close-button popup__close-button_type_add hover"></button>
+      </form>
+    </article>
+<!-- popup 2-->
+    <article class="popup popup_type_add">
+      <div class="popup__overlay"></div>
+      <form name="form-container" class="popup__container popup__container_add">
+        <h2 class="popup__title popup__title_style">Новая карточка</h2>
+        <input type="text" name="title" class="popup__input" placeholder="Название"/>
+        <input type="url" name="link" class="popup__input" placeholder="Ссылка на картинку"/>
+        <button type="submit" class="popup__submit-button popup__submit-button_style hover">Cоздать</button>
+        <button type="button" class="popup__close-button popup__close-button_type_add hover"></button>
       </form>
     </article>
     <script src="./scripts/index.js"></script>
