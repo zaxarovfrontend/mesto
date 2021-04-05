@@ -97,21 +97,24 @@ closeBtnAdd.addEventListener('click', closePopupAdd);
 const cardOnline = document.querySelector('.cards');
 const cardTemplate = document.querySelector('.card-template').content;
 
-function CreateElement (item) {
+function createElement (item) {
 const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 const cardTemplateTitle = cardTemplate.querySelector('.card__title');
 const cardTemplateImage = cardTemplate.querySelector('.card__image');
 
 cardTemplateTitle.textContent = item.name
 cardTemplateImage.src = item.link
+
 cardElement.querySelector('.card__like-button').addEventListener('click', likeCard);
 cardElement.querySelector('.card__delete').addEventListener('click',deleteCard);
+cardElement.querySelector('.card__image').addEventListener('click',onCardImagePopup);
+
 return cardElement;
 }
 
 function render() {
   initialCards.forEach((cardElement) => {
-    cardOnline.append(CreateElement(cardElement))
+    cardOnline.append(createElement(cardElement))
   })
 }
 
@@ -123,9 +126,9 @@ const popupСontainerAdd = document.querySelector('.popup__container_add');
 const deleteCardBtn = document.querySelector('.card__delete');
 
 function handlerNewCard (evt) {
-  evt.preventDefault();   
-  cardOnline.prepend(CreateElement({title:newCardTitle.value, link:newLink.value}))
-  
+  evt.preventDefault();  
+  cardOnline.prepend(createElement({title:newCardTitle.value, link:newLink.value}))
+
   closePopupAdd();
 }
 
@@ -138,5 +141,27 @@ function likeCard (evt) {
 function deleteCard (evt) {
   evt.target.closest('.card').remove(); 
 }
+
+const popupImage = document.querySelector('.popup_type_image');
+const closeBtnpopupImage = document.querySelector('.popup__close-button_type_image');
+const popupImageTitle = document.querySelector('.popup__caption');
+
+
+function openPopupImage() {
+  popupImage.classList.add('popup_opened');  
+}
+
+function closePopupImage() {
+  popupImage.classList.remove('popup_opened');
+}
+
+function onCardImagePopup(event) {
+  popupImage.src = event.target.src;
+  popupImageTitle.textContent = event.target.closest('.card').querySelector('.card__title').textContent
+  openPopupImage() 
+}
+
+
+closeBtnpopupImage.addEventListener('click', closePopupImage);
 
 
