@@ -17,7 +17,6 @@ const openBtnAdd = document.querySelector('.profile__add-button');
 const closeBtnAdd = document.querySelector('.popup__close-button_type_add');
 
 
-
 /* действие открытие модального окна */
 function openPopup() {
   popup.classList.add('popup_opened');
@@ -132,7 +131,6 @@ function handlerNewCard (evt) {
   closePopupAdd();
 }
 
-popupСontainerAdd.addEventListener('submit', handlerNewCard);
 
 function likeCard (evt) {
   evt.target.classList.toggle('card__like-button_active');
@@ -143,9 +141,9 @@ function deleteCard (evt) {
 }
 
 const popupImage = document.querySelector('.popup_type_image');
+const pupupImageCard = document.querySelector('.popup__image');
 const closeBtnpopupImage = document.querySelector('.popup__close-button_type_image');
 const popupImageTitle = document.querySelector('.popup__caption');
-
 
 function openPopupImage() {
   popupImage.classList.add('popup_opened');  
@@ -156,12 +154,11 @@ function closePopupImage() {
 }
 
 function onCardImagePopup(event) {
-  popupImage.src = event.target.src;
+  pupupImageCard.src = event.target.src;
   popupImageTitle.textContent = event.target.closest('.card').querySelector('.card__title').textContent
   openPopupImage() 
 }
 
-
 closeBtnpopupImage.addEventListener('click', closePopupImage);
-
+popupСontainerAdd.addEventListener('submit', handlerNewCard);
 

@@ -11,12 +11,3 @@
   background-color: transparent;
   outline:none;
 }
-
-
-@media screen and (min-width: 1280px) {
-  .popup__close-button {
-    left: 101%;
-    top: -11%;
-    background-size: 53px;
-}
-}
