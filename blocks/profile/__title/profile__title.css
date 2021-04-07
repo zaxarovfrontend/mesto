@@ -10,7 +10,7 @@
   padding-left: 25px;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
   .profile__title  {
     font-size: 42px;
     line-height: 29px;

@@ -7,10 +7,22 @@
   padding: 0;
 }
 
+
+@media screen and (min-width: 1024px) {
+  .profile {
+    max-width: 880px;
+    margin: 6px 0 43px 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
 @media screen and (min-width: 1280px) {
   .profile {
     max-width: 880px;
-    margin: 6px 200px 43px 200px;
-    flex-direction: row;
+    margin: 6px 0 43px 0;
   }
 }

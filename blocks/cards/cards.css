@@ -1,4 +1,4 @@
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
   .cards {
    min-width: 880px;
    display: grid;
