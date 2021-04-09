@@ -47,6 +47,8 @@ const closeAddCardPopupBtn = document.querySelector('.popup__close-button_type_a
 
 /* действие открытие модального окна */
 function openPopup(element) {
+  newCardTitle.value = '';
+  newLink.value = '';
   element.classList.add('popup_opened');
 }
 
@@ -58,7 +60,7 @@ function getValuePopupEdit(element) {
 
 /* действие закрытие модального окна */
 function closePopup(element) {
-  element.classList.remove('popup_opened'); 
+  element.classList.remove('popup_opened');
 }
 
 
@@ -96,8 +98,8 @@ cardTemplateImage.alt = item.textContent
 
 cardElement.querySelector('.card__like-button').addEventListener('click', likeCard);
 cardElement.querySelector('.card__delete').addEventListener('click',deleteCard);
-cardElement.querySelector('.card__image').addEventListener('click',openFullImage);
-/* если меняю на cardTemplateImage не открывается popup*/
+cardTemplateImage.addEventListener('click',openFullImage);
+
 return cardElement;
 }
 
@@ -117,7 +119,7 @@ const deleteCardBtn = document.querySelector('.card__delete');
 
 function handleAddCard (evt) {
   evt.preventDefault();  
-  cardOnline.prepend(createElement({title:newCardTitle.value, link:newLink.value}))
+  cardOnline.prepend(createElement({name:newCardTitle.value, link:newLink.value}))
   closePopup(popupAdd);
   newCardTitle.value = '';
   newLink.value = '';
