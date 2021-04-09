@@ -1,56 +1,4 @@
 
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const openEditProfilePopupBtn = document.querySelector('.profile__edit-button');
-/* Переменая крестик закрытия */
-const closeEditProfilePopupBtn = popupEditProfile.querySelector('.popup__close-button_type_edit');
-/* Переменая для контейнера с формой */
-const popupСontainer = popupEditProfile.querySelector('.popup__container');
-/* Переменая для name */
-const nameInput = popupСontainer.querySelector('[name="name-input"]');
-/* Переменая для job */
-const jobInput = popupСontainer.querySelector('[name="job-input"]');
-/* Переменая для заголовка куда будет добавляться новый текст */
-const newProfileTitle = document.querySelector('.profile__title');
-/* Переменая для текста работы куда будет добавляться новый текст */
-const newProfileText = document.querySelector('.profile__text');
-const openAddCardPopupBtn = document.querySelector('.profile__add-button');
-const closeAddCardPopupBtn = document.querySelector('.popup__close-button_type_add');
-
-
-/* действие открытие модального окна */
-function openPopup() {
-  popupEditProfile.classList.add('popup_opened');
-  nameInput.value =  newProfileTitle.textContent;
-  jobInput.value = newProfileText.textContent;
-  nameInput.value = "";
-  jobInput.value = "";
-}
-
-
-/* действие закрытие модального окна */
-function closePopup() {
-  popupEditProfile.classList.remove('popup_opened');
-}
-
-/* функция с обработчиком кнопки */
-function formSubmitHandler (evt) {
-  evt.preventDefault();   
-  newProfileTitle.textContent = nameInput.value;
-  newProfileText.textContent = jobInput.value;
-  closePopup();                            
-}
-
-/* Кнопка "редактировать" открывает модалку */
-
-openEditProfilePopupBtn.addEventListener('click', openPopup);
-/* Кнопка "крестик" (закрыть модалку) */
-closeEditProfilePopupBtn.addEventListener('click', closePopup);
-
-popupСontainer.addEventListener('submit', formSubmitHandler);
-
-
-/* код для спринта 5) */
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -79,21 +27,60 @@ const initialCards = [
   }
 ];
 
+const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+const openEditProfilePopupBtn = document.querySelector('.profile__edit-button');
+/* Переменая крестик закрытия */
+const closeEditProfilePopupBtn = popupEditProfile.querySelector('.popup__close-button_type_edit');
+/* Переменая для контейнера с формой */
+const popupСontainer = popupEditProfile.querySelector('.popup__container');
+/* Переменая для name */
+const nameInput = popupСontainer.querySelector('[name="name-input"]');
+/* Переменая для job */
+const jobInput = popupСontainer.querySelector('[name="job-input"]');
+/* Переменая для заголовка куда будет добавляться новый текст */
+const newProfileTitle = document.querySelector('.profile__title');
+/* Переменая для текста работы куда будет добавляться новый текст */
+const newProfileText = document.querySelector('.profile__text');
+const openAddCardPopupBtn = document.querySelector('.profile__add-button');
+const closeAddCardPopupBtn = document.querySelector('.popup__close-button_type_add');
+
+
+/* действие открытие модального окна */
+function openPopup(element) {
+  element.classList.add('popup_opened');
+}
+
+function getValuePopupEdit(element) {
+  nameInput.value =  newProfileTitle.textContent;
+  jobInput.value = newProfileText.textContent;
+  openPopup(popupEditProfile);
+}
+
+/* действие закрытие модального окна */
+function closePopup(element) {
+  element.classList.remove('popup_opened'); 
+}
+
+
+/* функция с обработчиком кнопки */
+function formSubmitHandler (evt) {
+  evt.preventDefault();   
+  newProfileTitle.textContent = nameInput.value;
+  newProfileText.textContent = jobInput.value;
+  closePopup(popupEditProfile);
+}
+
+/* Кнопка "редактировать" открывает модалку */
+openEditProfilePopupBtn.addEventListener('click', getValuePopupEdit);
+/* Кнопка "крестик" (закрыть модалку) */
+closeEditProfilePopupBtn.addEventListener('click', ()=>closePopup(popupEditProfile));
+popupСontainer.addEventListener('submit', formSubmitHandler);
+
+
+/* код для спринта 5) */
 const popupAdd = document.querySelector('.popup_type_add');
-
-function openPopupAdd() {
-  popupAdd.classList.add('popup_opened');
-
-}
-
-
-function closePopupAdd() {
-  popupAdd.classList.remove('popup_opened');
-}
-
-openAddCardPopupBtn.addEventListener('click', openPopupAdd);
-closeAddCardPopupBtn.addEventListener('click', closePopupAdd);
-
+openAddCardPopupBtn.addEventListener('click', ()=>openPopup(popupAdd));
+closeAddCardPopupBtn.addEventListener('click', ()=>closePopup(popupAdd));
 
 const cardOnline = document.querySelector('.cards');
 const cardTemplate = document.querySelector('.card-template').content;
@@ -110,7 +97,7 @@ cardTemplateImage.alt = item.textContent
 cardElement.querySelector('.card__like-button').addEventListener('click', likeCard);
 cardElement.querySelector('.card__delete').addEventListener('click',deleteCard);
 cardElement.querySelector('.card__image').addEventListener('click',openFullImage);
-
+/* если меняю на cardTemplateImage не открывается popup*/
 return cardElement;
 }
 
@@ -128,14 +115,12 @@ const popupСontainerAdd = document.querySelector('.popup__container_add');
 const deleteCardBtn = document.querySelector('.card__delete');
 
 
-
 function handleAddCard (evt) {
   evt.preventDefault();  
   cardOnline.prepend(createElement({title:newCardTitle.value, link:newLink.value}))
   popupСontainerAdd.reset();
-  closePopupAdd();
+  closePopup(popupAdd);
 }
-
 
 function likeCard (evt) {
   evt.target.classList.toggle('card__like-button_active');
@@ -150,21 +135,13 @@ const pupupImageCard = document.querySelector('.popup__image');
 const closeBtnpopupImage = document.querySelector('.popup__close-button_type_image');
 const popupImageTitle = document.querySelector('.popup__caption');
 
-function openPopupImage() {
-  popupImage.classList.add('popup_opened');  
-}
-
-function closePopupImage() {
-  popupImage.classList.remove('popup_opened');
-}
 
 function openFullImage(event) {
   pupupImageCard.src = event.target.src;
   pupupImageCard.alt = event.target.closest('.card').querySelector('.card__title').textContent
   popupImageTitle.textContent = event.target.closest('.card').querySelector('.card__title').textContent
-  openPopupImage()
+  openPopup(popupImage)
 }
 
-closeBtnpopupImage.addEventListener('click', closePopupImage);
+closeBtnpopupImage.addEventListener('click', ()=>closePopup(popupImage));
 popupСontainerAdd.addEventListener('submit', handleAddCard);
-
