@@ -87,8 +87,8 @@ const cardTemplate = document.querySelector('.card-template').content;
 
 function createElement (item) {
 const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-const cardTemplateTitle = cardTemplate.querySelector('.card__title');
-const cardTemplateImage = cardTemplate.querySelector('.card__image');
+const cardTemplateTitle =  cardElement.querySelector('.card__title');
+const cardTemplateImage =  cardElement.querySelector('.card__image');
 
 cardTemplateTitle.textContent = item.name
 cardTemplateImage.src = item.link
@@ -118,9 +118,11 @@ const deleteCardBtn = document.querySelector('.card__delete');
 function handleAddCard (evt) {
   evt.preventDefault();  
   cardOnline.prepend(createElement({title:newCardTitle.value, link:newLink.value}))
-  popupСontainerAdd.reset();
   closePopup(popupAdd);
+  newCardTitle.value = '';
+  newLink.value = '';
 }
+
 
 function likeCard (evt) {
   evt.target.classList.toggle('card__like-button_active');
