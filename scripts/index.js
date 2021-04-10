@@ -47,12 +47,10 @@ const closeAddCardPopupBtn = document.querySelector('.popup__close-button_type_a
 
 /* действие открытие модального окна */
 function openPopup(element) {
-  newCardTitle.value = '';
-  newLink.value = '';
   element.classList.add('popup_opened');
 }
 
-function getValuePopupEdit(element) {
+function openEditProfilePopup(element) {
   nameInput.value =  newProfileTitle.textContent;
   jobInput.value = newProfileText.textContent;
   openPopup(popupEditProfile);
@@ -65,7 +63,7 @@ function closePopup(element) {
 
 
 /* функция с обработчиком кнопки */
-function formSubmitHandler (evt) {
+function formEditProfileSubmitHandler (evt) {
   evt.preventDefault();   
   newProfileTitle.textContent = nameInput.value;
   newProfileText.textContent = jobInput.value;
@@ -73,15 +71,15 @@ function formSubmitHandler (evt) {
 }
 
 /* Кнопка "редактировать" открывает модалку */
-openEditProfilePopupBtn.addEventListener('click', getValuePopupEdit);
+openEditProfilePopupBtn.addEventListener('click', openEditProfilePopup);
 /* Кнопка "крестик" (закрыть модалку) */
 closeEditProfilePopupBtn.addEventListener('click', ()=>closePopup(popupEditProfile));
-popupСontainer.addEventListener('submit', formSubmitHandler);
+popupСontainer.addEventListener('submit', formEditProfileSubmitHandler);
 
 
 /* код для спринта 5) */
 const popupAdd = document.querySelector('.popup_type_add');
-openAddCardPopupBtn.addEventListener('click', ()=>openPopup(popupAdd));
+openAddCardPopupBtn.addEventListener('click', openEddPopupcard);
 closeAddCardPopupBtn.addEventListener('click', ()=>closePopup(popupAdd));
 
 const cardOnline = document.querySelector('.cards');
@@ -118,11 +116,15 @@ const deleteCardBtn = document.querySelector('.card__delete');
 
 
 function handleAddCard (evt) {
-  evt.preventDefault();  
+  evt.preventDefault(); 
   cardOnline.prepend(createElement({name:newCardTitle.value, link:newLink.value}))
   closePopup(popupAdd);
-  newCardTitle.value = '';
-  newLink.value = '';
+  popupСontainerAdd.reset();
+}
+
+function openEddPopupcard(element) {
+  popupСontainerAdd.reset();
+  openPopup(popupAdd);
 }
 
 
@@ -146,6 +148,7 @@ function openFullImage(event) {
   popupImageTitle.textContent = event.target.closest('.card').querySelector('.card__title').textContent
   openPopup(popupImage)
 }
+
 
 closeBtnpopupImage.addEventListener('click', ()=>closePopup(popupImage));
 popupСontainerAdd.addEventListener('submit', handleAddCard);
