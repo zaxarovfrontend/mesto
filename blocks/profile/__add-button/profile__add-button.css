@@ -10,7 +10,8 @@
   border-radius: 1%;
   cursor: pointer;
   background-size: 17px;
-  transition: opacity 0.9s linear 0.3s;
+  transition: opacity 0.4s linear 0.3s;
+  outline: none;
 }
 
 

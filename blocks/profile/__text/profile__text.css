@@ -7,6 +7,10 @@
   margin: 0;
   padding-bottom: 33px;
   padding-top: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 266px;
   }
 
 

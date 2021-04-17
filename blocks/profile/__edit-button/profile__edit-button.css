@@ -9,7 +9,8 @@
   align-self: flex-end;
   margin-left: 2px;
   cursor: pointer;
-  transition: opacity 0.9s linear 0.3s;
+  transition: opacity 0.4s linear 0.3s;
+  outline: none;
 }
 
 @media screen and (min-width: 1024px) {
