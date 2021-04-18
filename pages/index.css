@@ -42,18 +42,7 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_error.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error/_visible/popup__error_visible.css);
-
+@import url(../blocks/popup/__submit-button/_disabled/popup__submit-button.css);
 
 /* блок hover */
 @import url(../blocks/hover/hover.css);
-
-
-
-.disabled {
-  background-color: #fff;
-  color: #000;
-  opacity: .2;
-  border: 1px solid currentColor;
-  pointer-events: none;
-}
-

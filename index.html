@@ -54,10 +54,10 @@
       <div class="popup__overlay"></div>
       <form name="form-container" class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" name="name-input" class="popup__input" placeholder="Имя" />
-        <span class="popup__error" id="name-input-error"  minlength="2"  maxlength="40"></span></span>
-        <input type="text" name="job-input" class="popup__input" placeholder="Вид деятельности" />
-        <span class="popup__error" id="job-input-error" minlength="2"  maxlength="200"></span></span>
+        <input type="text" name="name-input" class="popup__input" placeholder="Имя" required/>
+        <span class="popup__error" id="name-input-error"  minlength="2"  maxlength="40"></span>
+        <input type="text" name="job-input" class="popup__input" placeholder="Вид деятельности" required/>
+        <span class="popup__error" id="job-input-error" minlength="2"  maxlength="200"></span>
         <button type="submit" class="popup__submit-button hover">Cохранить</button>
         <button type="button" class="popup__close-button popup__close-button_type_edit hover"></button>
       </form>
@@ -67,9 +67,9 @@
       <div class="popup__overlay"></div>
       <form name="form-container" class="popup__container popup__container_add">
         <h2 class="popup__title popup__title_style">Новое место</h2>
-        <input type="text" name="title" class="popup__input" minlength="2"  maxlength="30" placeholder="Название" />
+        <input type="text" name="title"  id="title-input" class="popup__input" minlength="2"  maxlength="30" placeholder="Название" required />
         <span class="popup__error" id="title-input-error"></span>
-        <input type="url" name="link" class="popup__input" placeholder="Ссылка на картинку" />
+        <input type="url" name="link"  id="link-input" class="popup__input" placeholder="Ссылка на картинку" required />
         <span class="popup__error" id="link-input-error"></span>
         <button type="submit" class="popup__submit-button popup__submit-button_style hover">Cоздать</button>
         <button type="button" class="popup__close-button popup__close-button_type_add hover"></button>

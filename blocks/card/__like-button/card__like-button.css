@@ -12,3 +12,7 @@
   background-color: transparent;
   transition: 0.4s linear 0.3s;
 }
+
+.card__like-button:hover {
+  opacity: 60%;
+}
