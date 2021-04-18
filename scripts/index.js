@@ -50,6 +50,7 @@ const elements = document.querySelectorAll('.popup');
 function openPopup(element) {
   element.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
+  enableValidation(validateConfig);
 }
 
 function openEditProfilePopup(element) {
@@ -143,6 +144,7 @@ function handleAddCard (evt) {
 
 function openEddPopupcard(element) {
   popupСontainerAdd.reset();
+  enableValidation(validateConfig);
   openPopup(popupAdd);
 }
 

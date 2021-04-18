@@ -2,7 +2,7 @@ const validateConfig = {
   formSelector: '.popup__container',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disable',
+  inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible',
   errorMessageNullInput: 'Вы пропустили это поле.',
@@ -14,14 +14,14 @@ const validateConfig = {
 /* проектная 6 */
 
 const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(validateConfig.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(validateConfig.errorClass);
 };
 
 const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(validateConfig.inputErrorClass);
   errorElement.classList.remove(validateConfig.errorClass);
   errorElement.textContent = '';

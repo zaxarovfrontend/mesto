@@ -11,6 +11,7 @@
   white-space: nowrap;
   overflow: hidden;
   width: 211px;
+  text-align: start;
 }
 
 @media screen and (min-width: 1024px) {
