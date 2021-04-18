@@ -7,7 +7,6 @@ const validateConfig = {
   errorClass: 'popup__error_visible',
   errorMessageNullInput: 'Вы пропустили это поле.',
   errorMessageNullLink: 'Введите адрес сайта.',
-  inputLinkClass: 'popup__input[name="link"]' 
 };
 
 
@@ -16,7 +15,7 @@ const validateConfig = {
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(validateConfig.inputErrorClass);
-  errorElement.textContent = errorMessage;
+  setCustomError(formElement, inputElement, validateConfig)
   errorElement.classList.add(validateConfig.errorClass);
 };
 
@@ -55,7 +54,7 @@ const enableValidation = (validateConfig) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });  
-    
+
   setEventListeners(formElement);
 });     
    
@@ -78,4 +77,12 @@ function toggleButtonState(inputList,buttonElement) {
    buttonElement.classList.remove(validateConfig.inactiveButtonClass);
    buttonElement.removeAttribute('disabled');
   }
+}
+
+function setCustomError(formElement, inputElement, validateConfig) {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  if (inputElement.type === 'url') {
+    errorElement.textContent = validateConfig.errorMessageNullLink;
+  }
+  else !inputElement.value.length > 0 ? errorElement.textContent = validateConfig.errorMessageNullInput : errorElement.textContent = inputElement.validationMessage;
 }

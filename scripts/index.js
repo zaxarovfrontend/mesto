@@ -1,10 +1,8 @@
-
 const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
-
   {
     name: 'Челябинская область',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
@@ -43,8 +41,17 @@ const newProfileTitle = document.querySelector('.profile__title');
 const newProfileText = document.querySelector('.profile__text');
 const openAddCardPopupBtn = document.querySelector('.profile__add-button');
 const closeAddCardPopupBtn = document.querySelector('.popup__close-button_type_add');
-const elements = document.querySelectorAll('.popup');
-
+const popupAdd = document.querySelector('.popup_type_add');
+const cardOnline = document.querySelector('.cards');
+const cardTemplate = document.querySelector('.card-template').content;
+const popupImage = document.querySelector('.popup_type_image');
+const pupupImageCard = document.querySelector('.popup__image');
+const closeBtnpopupImage = document.querySelector('.popup__close-button_type_image');
+const popupImageTitle = document.querySelector('.popup__caption');
+const newCardTitle = document.querySelector('[name="title"]');
+const newLink = document.querySelector('[name="link"]');
+const popupСontainerAdd = document.querySelector('.popup__container_add');
+const deleteCardBtn = document.querySelector('.card__delete');
 
 /* действие открытие модального окна */
 function openPopup(element) {
@@ -60,13 +67,11 @@ function openEditProfilePopup(element) {
 }
 
 function removeInputError(formElement) {
-  const inputFormList = formElement.querySelectorAll('.popup__input');
+  const inputFormList = formElement.querySelectorAll(validateConfig.inputSelector);
   inputFormList.forEach((item) => {
     hideInputError(formElement, item)
   })
 }
-
-
 
 /* действие закрытие модального окна */
 function closePopup(element) {
@@ -87,10 +92,6 @@ function closePopupClick (evt) {
     closePopup(element);
   }
 }
-
-document.addEventListener('click', closePopupClick);
-
-
 /* функция с обработчиком кнопки */
 function formEditProfileSubmitHandler (evt) {
   evt.preventDefault();   
@@ -98,35 +99,17 @@ function formEditProfileSubmitHandler (evt) {
   newProfileText.textContent = jobInput.value;
   closePopup(popupEditProfile);
 }
-
-/* Кнопка "редактировать" открывает модалку */
-openEditProfilePopupBtn.addEventListener('click', openEditProfilePopup);
-/* Кнопка "крестик" (закрыть модалку) */
-closeEditProfilePopupBtn.addEventListener('click', ()=>closePopup(popupEditProfile));
-popupСontainer.addEventListener('submit', formEditProfileSubmitHandler);
-
-
 /* код для спринта 5) */
-const popupAdd = document.querySelector('.popup_type_add');
-openAddCardPopupBtn.addEventListener('click', openEddPopupcard);
-closeAddCardPopupBtn.addEventListener('click', ()=>closePopup(popupAdd));
-
-const cardOnline = document.querySelector('.cards');
-const cardTemplate = document.querySelector('.card-template').content;
-
 function createElement (item) {
 const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 const cardTemplateTitle =  cardElement.querySelector('.card__title');
 const cardTemplateImage =  cardElement.querySelector('.card__image');
-
 cardTemplateTitle.textContent = item.name
 cardTemplateImage.src = item.link
 cardTemplateImage.alt = item.textContent
-
 cardElement.querySelector('.card__like-button').addEventListener('click', likeCard);
 cardElement.querySelector('.card__delete').addEventListener('click',deleteCard);
 cardTemplateImage.addEventListener('click',openFullImage);
-
 return cardElement;
 }
 
@@ -137,12 +120,6 @@ function renderInitialCards() {
 }
 
 renderInitialCards()
-
-const newCardTitle = document.querySelector('[name="title"]');
-const newLink = document.querySelector('[name="link"]');
-const popupСontainerAdd = document.querySelector('.popup__container_add');
-const deleteCardBtn = document.querySelector('.card__delete');
-
 
 function handleAddCard (evt) {
   evt.preventDefault(); 
@@ -157,7 +134,6 @@ function openEddPopupcard(element) {
   openPopup(popupAdd);
 }
 
-
 function likeCard (evt) {
   evt.target.classList.toggle('card__like-button_active');
 }
@@ -166,12 +142,6 @@ function deleteCard (evt) {
   evt.target.closest('.card').remove(); 
 }
 
-const popupImage = document.querySelector('.popup_type_image');
-const pupupImageCard = document.querySelector('.popup__image');
-const closeBtnpopupImage = document.querySelector('.popup__close-button_type_image');
-const popupImageTitle = document.querySelector('.popup__caption');
-
-
 function openFullImage(event) {
   pupupImageCard.src = event.target.src;
   pupupImageCard.alt = event.target.closest('.card').querySelector('.card__title').textContent
@@ -179,6 +149,13 @@ function openFullImage(event) {
   openPopup(popupImage)
 }
 
-
 closeBtnpopupImage.addEventListener('click', ()=>closePopup(popupImage));
 popupСontainerAdd.addEventListener('submit', handleAddCard);
+document.addEventListener('click', closePopupClick);
+/* Кнопка "редактировать" открывает модалку */
+openEditProfilePopupBtn.addEventListener('click', openEditProfilePopup);
+/* Кнопка "крестик" (закрыть модалку) */
+closeEditProfilePopupBtn.addEventListener('click', ()=>closePopup(popupEditProfile));
+popupСontainer.addEventListener('submit', formEditProfileSubmitHandler);
+openAddCardPopupBtn.addEventListener('click', openEddPopupcard);
+closeAddCardPopupBtn.addEventListener('click', ()=>closePopup(popupAdd));

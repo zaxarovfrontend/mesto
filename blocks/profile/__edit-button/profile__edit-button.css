@@ -11,11 +11,13 @@
   cursor: pointer;
   transition: opacity 0.4s linear 0.3s;
   outline: none;
+  margin-bottom: 14px;
 }
 
 @media screen and (min-width: 1024px) {
   .profile__edit-button {
     width: 24px;
     height: 24px;
+    margin-bottom: 9px;
   }
 }
