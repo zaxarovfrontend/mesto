@@ -50,7 +50,7 @@ const elements = document.querySelectorAll('.popup');
 function openPopup(element) {
   element.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  enableValidation(validateConfig);
+  removeInputError(element)
 }
 
 function openEditProfilePopup(element) {
@@ -58,6 +58,15 @@ function openEditProfilePopup(element) {
   jobInput.value = newProfileText.textContent;
   openPopup(popupEditProfile);
 }
+
+function removeInputError(formElement) {
+  const inputFormList = formElement.querySelectorAll('.popup__input');
+  inputFormList.forEach((item) => {
+    hideInputError(formElement, item)
+  })
+}
+
+
 
 /* действие закрытие модального окна */
 function closePopup(element) {

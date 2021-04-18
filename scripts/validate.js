@@ -55,8 +55,7 @@ const enableValidation = (validateConfig) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });  
-  // const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
-  // fieldsetList.forEach((fieldSet) => {
+    
   setEventListeners(formElement);
 });     
    
