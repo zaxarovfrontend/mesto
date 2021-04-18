@@ -71,13 +71,11 @@ function closePopupEsc(evt) {
   }
 }
 
-function closePopupClick () {
- elements.forEach((element)=> {
-  element.addEventListener('click', (evt)=> {
-    if (evt.target.classList.contains('popup_opened'))
-    closePopup(element)
-  })
- })
+function closePopupClick (evt) {
+  if (evt.target.classList.contains('popup__overlay')) {
+    const element = document.querySelector('.popup_opened')
+    closePopup(element);
+  }
 }
 
 document.addEventListener('click', closePopupClick);
