@@ -36,7 +36,7 @@ const checkInputValidity = (formElement, inputElement) => {
 };
 
 const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const inputList = Array.from(formElement.querySelectorAll(validateConfig.inputSelector));
   const buttonElement = formElement.querySelector(validateConfig.submitButtonSelector);
 
   
@@ -45,26 +45,24 @@ const setEventListeners = (formElement) => {
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement);
-      // чтобы проверять его при изменении любого из полей
       toggleButtonState(inputList, buttonElement);
     });
   });
 }; 
-const enableValidation = () => {
+const enableValidation = (validateConfig) => {
   const formList = Array.from(document.querySelectorAll(validateConfig.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });  
-   const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
-   fieldsetList.forEach((fieldSet) => {
-  setEventListeners(fieldSet);
+  // const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
+  // fieldsetList.forEach((fieldSet) => {
+  setEventListeners(formElement);
 });     
    
-  });
-};
+  };
 
-enableValidation();
+enableValidation(validateConfig);
 
 function hasInvalidInput(inputList) {
 return inputList.some((inputElement) => {
@@ -74,9 +72,11 @@ return inputList.some((inputElement) => {
 
 function toggleButtonState(inputList,buttonElement) {
   if (hasInvalidInput(inputList)) {
-  buttonElement.classList.add(validateConfig.inactiveButtonClass);  
+  buttonElement.classList.add(validateConfig.inactiveButtonClass); 
+  buttonElement.setAttribute('disabled', true);
   }
   else {
-   buttonElement.classList.remove(validateConfig.inactiveButtonClass); 
+   buttonElement.classList.remove(validateConfig.inactiveButtonClass);
+   buttonElement.removeAttribute('disabled');
   }
 }
