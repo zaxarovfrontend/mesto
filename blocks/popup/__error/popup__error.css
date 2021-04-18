@@ -13,7 +13,7 @@
 
 
  @media screen and (min-width: 1280px) {
-  .popup__container {
+  .popup__error {
    width: 361px;
   }
 }
