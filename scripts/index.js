@@ -43,11 +43,13 @@ const newProfileTitle = document.querySelector('.profile__title');
 const newProfileText = document.querySelector('.profile__text');
 const openAddCardPopupBtn = document.querySelector('.profile__add-button');
 const closeAddCardPopupBtn = document.querySelector('.popup__close-button_type_add');
+const elements = document.querySelectorAll('.popup');
 
 
 /* действие открытие модального окна */
 function openPopup(element) {
   element.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 function openEditProfilePopup(element) {
@@ -59,7 +61,26 @@ function openEditProfilePopup(element) {
 /* действие закрытие модального окна */
 function closePopup(element) {
   element.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 }
+
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    const element = document.querySelector('.popup_opened');  
+    closePopup(element)
+  }
+}
+
+function closePopupClick () {
+ elements.forEach((element)=> {
+  element.addEventListener('click', (evt)=> {
+    if (evt.target.classList.contains('popup_opened'))
+    closePopup(element)
+  })
+ })
+}
+
+document.addEventListener('click', closePopupClick);
 
 
 /* функция с обработчиком кнопки */
