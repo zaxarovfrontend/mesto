@@ -9,14 +9,14 @@ const validateConfig = {
   errorMessageNullLink: 'Введите адрес сайта.',
 };
 
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (validateConfig, formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(validateConfig.inputErrorClass);
   setCustomError(formElement, inputElement, validateConfig)
   errorElement.classList.add(validateConfig.errorClass);
 };
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (validateConfig, formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(validateConfig.inputErrorClass);
   errorElement.classList.remove(validateConfig.errorClass);
@@ -31,7 +31,7 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
-const setEventListeners = (formElement) => {
+const setEventListeners = (validateConfig, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(validateConfig.inputSelector));
   const buttonElement = formElement.querySelector(validateConfig.submitButtonSelector);
   toggleButtonState(inputList, buttonElement);
@@ -59,7 +59,7 @@ function hasInvalidInput(inputList) {
   }); 
 }
 
-function toggleButtonState(inputList,buttonElement) {
+function toggleButtonState(validateConfig, inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(validateConfig.inactiveButtonClass); 
     buttonElement.setAttribute('disabled', true);

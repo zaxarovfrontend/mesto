@@ -52,18 +52,21 @@ const newCardTitle = document.querySelector('[name="title"]');
 const newLink = document.querySelector('[name="link"]');
 const popupСontainerAdd = document.querySelector('.popup__container_add');
 const deleteCardBtn = document.querySelector('.card__delete');
+const formElement = document.querySelector(validateConfig.formSelector);
+const inputList = Array.from(formElement.querySelectorAll(validateConfig.inputSelector));
+const buttonElement = formElement.querySelector(validateConfig.submitButtonSelector);
 
 /* действие открытие модального окна */
 function openPopup(element) {
   element.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  removeInputError(element)
 }
 
-function openEditProfilePopup(element) {
+function openEditProfilePopup() {
   nameInput.value = newProfileTitle.textContent;
   jobInput.value = newProfileText.textContent;
   openPopup(popupEditProfile);
+  removeInputError(popupEditProfile);
 }
 
 function removeInputError(formElement) {
@@ -94,7 +97,7 @@ function closePopupClick(evt) {
 }
 
 /* функция с обработчиком кнопки */
-function formEditProfileSubmitHandler(evt) {
+function handleEditProfileFormSubmit(evt) {
   evt.preventDefault();   
   newProfileTitle.textContent = nameInput.value;
   newProfileText.textContent = jobInput.value;
@@ -132,7 +135,8 @@ function handleAddCard(evt) {
 
 function openEddPopupcard(element) {
   popupСontainerAdd.reset();
-  enableValidation(validateConfig);
+  removeInputError(popupAdd);
+  toggleButtonState(inputList, buttonElement);
   openPopup(popupAdd);
 }
 
@@ -158,6 +162,6 @@ document.addEventListener('click', closePopupClick);
 openEditProfilePopupBtn.addEventListener('click', openEditProfilePopup);
 /* Кнопка "крестик" (закрыть модалку) */
 closeEditProfilePopupBtn.addEventListener('click', () => closePopup(popupEditProfile));
-popupСontainer.addEventListener('submit', formEditProfileSubmitHandler);
+popupСontainer.addEventListener('submit', handleEditProfileFormSubmit);
 openAddCardPopupBtn.addEventListener('click', openEddPopupcard);
 closeAddCardPopupBtn.addEventListener('click', () => closePopup(popupAdd));
