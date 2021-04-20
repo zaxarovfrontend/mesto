@@ -7,6 +7,7 @@ const validateConfig = {
   errorClass: 'popup__error_visible',
   errorMessageNullInput: 'Вы пропустили это поле.',
   errorMessageNullLink: 'Введите адрес сайта.',
+  popupСontainerAdd: '.popup__container_add'
 };
 
 const showInputError = (formElement, inputElement, errorMessage) => {

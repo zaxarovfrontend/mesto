@@ -52,9 +52,8 @@ const newCardTitle = document.querySelector('[name="title"]');
 const newLink = document.querySelector('[name="link"]');
 const popupСontainerAdd = document.querySelector('.popup__container_add');
 const deleteCardBtn = document.querySelector('.card__delete');
-const formElement = document.querySelector(validateConfig.formSelector);
-const inputList = Array.from(formElement.querySelectorAll(validateConfig.inputSelector));
-const buttonElement = formElement.querySelector(validateConfig.submitButtonSelector);
+const inputList = Array.from(popupСontainerAdd.querySelectorAll(validateConfig.inputSelector));
+const buttonElement = popupСontainerAdd.querySelector(validateConfig.submitButtonSelector);
 
 /* действие открытие модального окна */
 function openPopup(element) {
@@ -133,7 +132,7 @@ function handleAddCard(evt) {
   popupСontainerAdd.reset();
 }
 
-function openEddPopupcard(element) {
+function openEddPopupCard(element) {
   popupСontainerAdd.reset();
   removeInputError(popupAdd);
   toggleButtonState(inputList, buttonElement);
@@ -163,5 +162,5 @@ openEditProfilePopupBtn.addEventListener('click', openEditProfilePopup);
 /* Кнопка "крестик" (закрыть модалку) */
 closeEditProfilePopupBtn.addEventListener('click', () => closePopup(popupEditProfile));
 popupСontainer.addEventListener('submit', handleEditProfileFormSubmit);
-openAddCardPopupBtn.addEventListener('click', openEddPopupcard);
+openAddCardPopupBtn.addEventListener('click', openEddPopupCard);
 closeAddCardPopupBtn.addEventListener('click', () => closePopup(popupAdd));

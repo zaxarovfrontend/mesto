@@ -51,23 +51,23 @@
     <!-- popup 1>-->
     <article class="popup popup_type_edit-profile">
       <div class="popup__overlay"></div>
-      <form name="form-container" class="popup__container">
+      <form name="form-container" class="popup__container" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" name="name-input" id="name-input" minlength="2"  maxlength="40" class="popup__input" placeholder="Имя" required/>
+        <input type="text" name="name-input" id="name-input" minlength="2"  maxlength="40" class="popup__input" placeholder="Имя" required />
         <span class="popup__error" id="name-input-error" ></span>
-        <input type="text" name="job-input" minlength="2"  maxlength="200" id="job-input" class="popup__input" placeholder="Вид деятельности" required/>
+        <input type="text" name="job-input" minlength="2"  maxlength="200" id="job-input" class="popup__input" placeholder="Вид деятельности" required />
         <span class="popup__error" id="job-input-error" ></span>
         <button type="submit" class="popup__submit-button hover">Cохранить</button>
         <button type="button" class="popup__close-button popup__close-button_type_edit hover"></button>
       </form>
     </article>
     <!-- popup 2>-->
-    <article class="popup popup_type_add">
+    <article class="popup popup_type_add" >
       <div class="popup__overlay"></div>
-      <form name="form-container" class="popup__container popup__container_add">
+      <form name="form-container" class="popup__container popup__container_add" novalidate>
         <h2 class="popup__title popup__title_style">Новое место</h2>
         <input type="text" name="title"  id="title-input" class="popup__input" minlength="2"  maxlength="30" placeholder="Название" required />
-        <span class="popup__error" id="title-input-error"></span>
+        <span class="popup__error" id="title-input-error" ></span>
         <input type="url" name="link"  id="link-input" class="popup__input" placeholder="Ссылка на картинку" required />
         <span class="popup__error" id="link-input-error"></span>
         <button type="submit" class="popup__submit-button popup__submit-button_style hover">Cоздать</button>
