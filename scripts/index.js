@@ -1,4 +1,5 @@
-const initialCards = [
+
+/*const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -24,6 +25,9 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+*/
+
+import {Card} from './Card.js'
 
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const openEditProfilePopupBtn = document.querySelector('.profile__edit-button');
@@ -104,6 +108,7 @@ function handleEditProfileFormSubmit(evt) {
 }
 
 /* код для спринта 5) */
+/*
 function createElement(item) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardTemplateTitle = cardElement.querySelector('.card__title');
@@ -117,13 +122,15 @@ function createElement(item) {
   return cardElement;
 }
 
+
+
 function renderInitialCards() {
   initialCards.forEach((cardElement) => {
     cardOnline.append(createElement(cardElement))
   })
 }
 
-renderInitialCards()
+renderInitialCards() */
 
 function handleAddCard(evt) {
   evt.preventDefault(); 
@@ -131,6 +138,8 @@ function handleAddCard(evt) {
   closePopup(popupAdd);
   popupСontainerAdd.reset();
 }
+
+
 
 function openEddPopupCard(element) {
   popupСontainerAdd.reset();
