@@ -1,5 +1,5 @@
 
-/*const initialCards = [
+const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,9 +25,10 @@
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-*/
 
-import Card from './Card.js'
+
+import Card  from './Card.js'
+
 
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const openEditProfilePopupBtn = document.querySelector('.profile__edit-button');
@@ -131,6 +132,17 @@ function renderInitialCards() {
 }
 
 renderInitialCards() */
+
+initialCards.forEach((item) => {
+  const card = new Card(item, '.card-template');
+  const cardElement = card.generateCard();
+  document.querySelector('.cards').append(cardElement);
+  
+}); 
+
+
+
+
 
 function handleAddCard(evt) {
   evt.preventDefault(); 
