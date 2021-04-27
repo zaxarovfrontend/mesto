@@ -27,7 +27,7 @@
 ];
 */
 
-import {Card} from './Card.js'
+import Card from './Card.js'
 
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const openEditProfilePopupBtn = document.querySelector('.profile__edit-button');

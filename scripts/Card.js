@@ -25,11 +25,10 @@ const initialCards = [
   }
 ];
 
-export class Card {
-  constructor(title, image, alt, cardSelector) {
-    this._title = title;
-    this._image = image;
-    this._alt = alt;
+export default class Card {
+  constructor(data, cardSelector) {
+    this._name = data.title;
+    this._link = data.link;
     this._cardSelector = cardSelector;
   }
 
@@ -44,9 +43,8 @@ export class Card {
 
 generateCard() {
   this._element = this._getTemplate();
-  this._element.querySelector('.card__image').src = this._image;
-  this._element.querySelector('.card__image').alt = this._alt;
-  this._element.querySelectorAll('.card__title').textContent = this._title;
+  this._element.querySelector(".card__image").src = this._image;
+  this._element.querySelector(".card__title").textContent = this._text;
   return this._element;
 }
 }
