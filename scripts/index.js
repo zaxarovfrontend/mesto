@@ -114,10 +114,7 @@ initialCards.forEach((item) => {
 }); 
 
 
-
-
-
-function handleAddCard(evt) {
+ function handleAddCard(evt) {
   evt.preventDefault(); 
   cardOnline.prepend(createElement({name:newCardTitle.value, link:newLink.value}))
   closePopup(popupAdd);
@@ -141,12 +138,13 @@ function deleteCard(evt) {
   evt.target.closest('.card').remove(); 
 }
 
-function openFullImage(event) {
+/*function openFullImage(event) {
   pupupImageCard.src = event.target.src;
   pupupImageCard.alt = event.target.closest('.card').querySelector('.card__title').textContent
   popupImageTitle.textContent = event.target.closest('.card').querySelector('.card__title').textContent
   openPopup(popupImage)
 }
+*/
 
 closeBtnpopupImage.addEventListener('click', () => closePopup(popupImage));
 popupСontainerAdd.addEventListener('submit', handleAddCard);
