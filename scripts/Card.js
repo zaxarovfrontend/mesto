@@ -4,7 +4,7 @@ export default class Card {
     this._link = data.link;
     this._image = data.link;
     this._cardSelector = cardSelector;
-    this._openFullImage = openFullImage;
+    this._openFullImage = this._openFullImage.bind(this);
   }
 
   _getTemplate() {
@@ -32,11 +32,5 @@ _openFullImage(event) {
   openPopup(popupImage)
 }
 
-_setEventListeners() {
-  сonsole.log(this)
-  this._element.addEventListener('click', () => {
-  console.log(this)
-    this._openFullImage();
-  });
-}
+
 }

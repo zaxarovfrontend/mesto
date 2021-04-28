@@ -1,0 +1,20 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "* редактирование анкеты и возможность заполненения профиля\r * реализована функция добаления фотки по ссылкам\r * закрытие попапа нажатием на Esc\r * реализовано удаление и установка лайка карточки\r * реализована функция валидации форм",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaxarovfrontend/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaxarovfrontend/mesto/issues"
+  },
+  "homepage": "https://github.com/zaxarovfrontend/mesto#readme"
+}
