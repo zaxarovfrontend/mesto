@@ -36,7 +36,6 @@ export default class Card {
   _openFullImage(event) {
     this.pupupImageCard.src = event.target.src;
     this.pupupImageCard.alt = event.target.closest('.card').querySelector('.card__title').textContent
-    this.popupImageTitle.textContent = event.target.closest('.card').querySelector('.card__title').textContent
     this.openPopup(this.pupupImageCard)
   }
 

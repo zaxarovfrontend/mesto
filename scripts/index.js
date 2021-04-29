@@ -105,15 +105,6 @@ function openEddPopupCard(element) {
   openPopup(popupAdd);
 }
 
-function likeCard(evt) {
-  evt.target.classList.toggle('card__like-button_active');
-}
- 
-function deleteCard(evt) {
-  evt.target.closest('.card').remove(); 
-}
-
-
 closeBtnpopupImage.addEventListener('click', () => closePopup(popupImage));
 popupСontainerAdd.addEventListener('submit', handleAddCard);
 document.addEventListener('click', closePopupClick);
