@@ -81,33 +81,9 @@ function handleEditProfileFormSubmit(evt) {
   closePopup(popupEditProfile);
 }
 
-/* код для спринта 5) */
-/*
-function createElement(item) {
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  const cardTemplateTitle = cardElement.querySelector('.card__title');
-  const cardTemplateImage = cardElement.querySelector('.card__image');
-  cardTemplateTitle.textContent = item.name
-  cardTemplateImage.src = item.link
-  cardTemplateImage.alt = item.textContent
-  cardElement.querySelector('.card__like-button').addEventListener('click', likeCard);
-  cardElement.querySelector('.card__delete').addEventListener('click',deleteCard);
-  cardTemplateImage.addEventListener('click',openFullImage);
-  return cardElement;
-}
-
-
-
-function renderInitialCards() {
-  initialCards.forEach((cardElement) => {
-    cardOnline.append(createElement(cardElement))
-  })
-}
-
-renderInitialCards() */
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '.card-template', openFullImage);
+  const card = new Card(item, '.card-template');
   const cardElement = card.generateCard();
   document.querySelector('.cards').append(cardElement); 
 }); 
@@ -137,13 +113,6 @@ function deleteCard(evt) {
   evt.target.closest('.card').remove(); 
 }
 
-/*function openFullImage(event) {
-  pupupImageCard.src = event.target.src;
-  pupupImageCard.alt = event.target.closest('.card').querySelector('.card__title').textContent
-  popupImageTitle.textContent = event.target.closest('.card').querySelector('.card__title').textContent
-  openPopup(popupImage)
-}
-*/
 
 closeBtnpopupImage.addEventListener('click', () => closePopup(popupImage));
 popupСontainerAdd.addEventListener('submit', handleAddCard);
