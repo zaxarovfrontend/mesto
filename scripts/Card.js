@@ -4,7 +4,7 @@ export default class Card {
     this._link = data.link;
     this._image = data.link;
     this._cardSelector = cardSelector;
-    this._openFullImage = this._openFullImage;
+    this._openFullImage = openFullImage;
     this._cardImage = ('.card__image');
     this._cardLike = ('.card__like-button');
     this._cardDelete = ('.card__delete');
