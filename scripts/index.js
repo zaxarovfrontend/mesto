@@ -80,28 +80,19 @@ function handleEditProfileFormSubmit(evt) {
 }
 
 function createElement(item) {
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  const cardTemplateTitle = cardElement.querySelector(".card__title");
-  const cardTemplateImage = cardElement.querySelector(".card__image");
-  cardTemplateTitle.textContent = item.name;
-  cardTemplateImage.src = item.link;
-  cardTemplateImage.alt = item.textContent;
-  cardElement.querySelector(".card__like-button").addEventListener("click", likeCard);
-  cardElement.querySelector(".card__delete").addEventListener("click", deleteCard);
-  cardTemplateImage.addEventListener("click", openFullImage);
+  const card = new Card(item, ".card-template", openFullImage);
+  const cardElement = card.generateCard();
   return cardElement;
 }
 function renderInitialCards() {
-  initialCards.forEach((cardElement) => {
-    cardOnline.append(createElement(cardElement));
+  initialCards.forEach((item) => {
+  const cardElement = createElement(item);  
+  document.querySelector(".cards").append(cardElement);
   });
+
 }
 
-initialCards.forEach((item) => {
-  const card = new Card(item, ".card-template", openFullImage);
-  const cardElement = card.generateCard();
-  document.querySelector(".cards").append(cardElement);
-});
+renderInitialCards();
 
 function handleAddCard(evt) {
   evt.preventDefault();
