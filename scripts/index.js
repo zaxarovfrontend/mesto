@@ -83,7 +83,7 @@ function handleEditProfileFormSubmit(evt) {
 
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '.card-template');
+  const card = new Card(item, '.card-template', openFullImage);
   const cardElement = card.generateCard();
   document.querySelector('.cards').append(cardElement); 
 }); 
@@ -103,6 +103,12 @@ function openEddPopupCard(element) {
   removeInputError(popupAdd);
   toggleButtonState(inputList, buttonElement);
   openPopup(popupAdd);
+}
+
+function openFullImage(name, link) {
+  document.querySelector('.popup__image').src = link
+  document.querySelector('.popup__caption').alt = name
+  this.openPopup(this.pupupImageCard)
 }
 
 closeBtnpopupImage.addEventListener('click', () => closePopup(popupImage));
