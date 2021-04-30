@@ -34,12 +34,12 @@ export default class Card {
     return this._element;
   }
 
-
   _likeCard(evt) {
     evt.target.classList.toggle('card__like-button_active');
   }
   
   _deleteCard(evt) {
   evt.target.closest('.card').remove(); 
-}
+  }
+  
 }
