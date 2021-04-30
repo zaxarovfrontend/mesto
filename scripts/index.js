@@ -120,7 +120,7 @@ function openEddPopupCard(element) {
 function openFullImage(name, link) {
   document.querySelector(".popup__image").src = link;
   document.querySelector(".popup__caption").alt = name;
-  openPopup(document.querySelector(".popup__image"));
+  openPopup(document.querySelector(".popup_type_image"));
 }
 
 closeBtnpopupImage.addEventListener("click", () => closePopup(popupImage));
