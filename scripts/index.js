@@ -3,6 +3,20 @@ import { initialCards } from "./initialCards.js";
 import  FormValidator from "./FormValidator.js";
 export {validateConfig};
 
+
+const validateConfig = {
+  formSelector: '.popup__container',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+  errorMessageNullInput: 'Вы пропустили это поле.',
+  errorMessageNullLink: 'Введите адрес сайта.',
+  popupСontainerAdd: '.popup__container_add'
+};
+
+
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const openEditProfilePopupBtn = document.querySelector(".profile__edit-button");
 /* Переменая крестик закрытия */
@@ -30,18 +44,8 @@ const newCardTitle = document.querySelector('[name="title"]');
 const newLink = document.querySelector('[name="link"]');
 const popupСontainerAdd = document.querySelector(".popup__container_add");
 const deleteCardBtn = document.querySelector(".card__delete");
+const buttonElement = document.querySelector(validateConfig.submitButtonSelector);
 
-const validateConfig = {
-  formSelector: '.popup__container',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-  errorMessageNullInput: 'Вы пропустили это поле.',
-  errorMessageNullLink: 'Введите адрес сайта.',
-  popupСontainerAdd: '.popup__container_add'
-};
 
 
 
@@ -55,15 +59,9 @@ function openEditProfilePopup() {
   nameInput.value = newProfileTitle.textContent;
   jobInput.value = newProfileText.textContent;
   openPopup(popupEditProfile);
-  removeInputError(popupEditProfile);
 }
 
-function removeInputError(formElement) {
-  const inputFormList = formElement.querySelectorAll(inputSelector);
-  inputFormList.forEach((item) => {
-    hideInputError(formElement, item);
-  });
-}
+
 
 /* действие закрытие модального окна */
 function closePopup(element) {
@@ -117,10 +115,9 @@ function handleAddCard(evt) {
 
 function openEddPopupCard(element) {
   popupСontainerAdd.reset();
-  removeInputError(popupAdd);
-  toggleButtonState(inputList, buttonElement);
+  //toggleButtonState(FormValidator.removeInputError);
   openPopup(popupAdd);
-}
+} 
 
 function openFullImage(name, link) {
   document.querySelector(".popup__image").src = link;
