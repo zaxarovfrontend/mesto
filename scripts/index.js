@@ -45,6 +45,10 @@ const newLink = document.querySelector('[name="link"]');
 const popupСontainerAdd = document.querySelector(".popup__container_add");
 const deleteCardBtn = document.querySelector(".card__delete");
 const buttonElement = document.querySelector(validateConfig.submitButtonSelector);
+const popupContAdd = new FormValidator (validateConfig, document.querySelector('.popup__container_add'));
+popupContAdd.enableValidation()
+const popupCont = new FormValidator (validateConfig, document.querySelector('.popup__container'));
+popupCont.enableValidation()
 
 
 
@@ -59,6 +63,7 @@ function openEditProfilePopup() {
   nameInput.value = newProfileTitle.textContent;
   jobInput.value = newProfileText.textContent;
   openPopup(popupEditProfile);
+  popupCont.removeInputError();
 }
 
 
@@ -115,8 +120,8 @@ function handleAddCard(evt) {
 
 function openEddPopupCard(element) {
   popupСontainerAdd.reset();
-  //toggleButtonState(FormValidator.removeInputError);
   openPopup(popupAdd);
+  popupContAdd.removeInputError();
 } 
 
 function openFullImage(name, link) {
@@ -126,12 +131,6 @@ function openFullImage(name, link) {
 }
 
  
-const popupContAdd = new FormValidator (validateConfig, document.querySelector('.popup__container_add'));
-popupContAdd.enableValidation()
-const popupCont = new FormValidator (validateConfig, document.querySelector('.popup__container'));
-popupCont.enableValidation()
-
-
 closeBtnpopupImage.addEventListener("click", () => closePopup(popupImage));
 popupСontainerAdd.addEventListener("submit", handleAddCard);
 document.addEventListener("click", closePopupClick);

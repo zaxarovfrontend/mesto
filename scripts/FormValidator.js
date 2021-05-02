@@ -55,10 +55,10 @@ export default class FormValidator {
     errorElement.textContent = '';
   };
   
-  _removeInputError(formElement) {
-    const inputFormList = formElement.querySelectorAll(inputSelector);
-    inputFormList.forEach((item) => {
+  removeInputError(formElement) {
+   this._inputList.forEach((item) => {
       this._hideInputError(formElement, item);
+      this._toggleButtonState()
     });
   }
 
