@@ -8,6 +8,8 @@ export default class FormValidator {
     this._buttonElement = this._formElement.querySelector(validateConfig.submitButtonSelector);
     this._formSelector = validateConfig.formSelector;
     this._inputErrorClass = validateConfig.inputErrorClass;
+    this._errorMessageNullInput = validateConfig.errorMessageNullInput;
+    this._errorMessageNullLink = validateConfig.errorMessageNullLink;
   };
 
   
@@ -39,10 +41,10 @@ export default class FormValidator {
     }
   };
   
-  _showInputError = (formElement, inputElement, errorMessage) => {
-    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  _showInputError = (inputElement) => {
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
-    setCustomError(inputElement)
+    this._setCustomError(inputElement)
     errorElement.classList.add(validateConfig.errorClass);
   };
   
@@ -74,11 +76,11 @@ export default class FormValidator {
   };
   
   
-  setCustomError(inputElement, validateConfig) {
+  _setCustomError(inputElement, validateConfig) {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     if (inputElement.type === 'url') {
-      errorElement.textContent = validateConfig.errorMessageNullLink;
+      errorElement.textContent = this._errorMessageNullLink;
     } 
-    else !inputElement.value.length > 0 ? errorElement.textContent = validateConfig.errorMessageNullInput : errorElement.textContent = inputElement.validationMessage;
+    else !inputElement.value.length > 0 ? errorElement.textContent = this._errorMessageNullInput : errorElement.textContent = inputElement.validationMessage;
   }
-};
+};``
