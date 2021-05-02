@@ -14,24 +14,19 @@ export default class FormValidator {
   _setEventListeners = (formElement) => {
     const inputList = Array.from(this._formElement.querySelectorAll(this._validateConfig, this._inputSelector));
     const buttonElement = formElement.querySelector(this._validateConfig, this._submitButtonSelector);
-    this_toggleButtonState(inputList, buttonElement);
+    _toggleButtonState(inputList, buttonElement);
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', function () {
-        checkInputValidity(formElement, inputElement);
-        toggleButtonState(inputList, buttonElement);
+        checkInputValidity(this._formElement, inputElement);
+        toggleButtonState(this._inputList, this._buttonElement);
       });
     });
   }; 
   
-  enableValidation = (validateConfig) => {
-    const formList = Array.from(document.querySelectorAll(this._validateConfig, this._formSelector));
-    formList.forEach((formElement) => {
-      formElement.addEventListener('submit', function (evt) {
-        evt.preventDefault();
-      });  
-      setEventListeners(formElement);
-    });
-  };
+  enableValidation = () => {
+   this._setEventListeners();
+    };
+
   
   _hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
