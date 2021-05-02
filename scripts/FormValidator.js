@@ -10,6 +10,7 @@ export default class FormValidator {
     this._inputErrorClass = validateConfig.inputErrorClass;
     this._errorMessageNullInput = validateConfig.errorMessageNullInput;
     this._errorMessageNullLink = validateConfig.errorMessageNullLink;
+    this._inactiveButtonClass = validateConfig.inactiveButtonClass;
   };
 
   
@@ -55,9 +56,9 @@ export default class FormValidator {
     errorElement.textContent = '';
   };
   
-  removeInputError(formElement) {
+  removeInputError(inputElement) {
    this._inputList.forEach((item) => {
-      this._hideInputError(formElement, item);
+      this._hideInputError(inputElement, item);
       this._toggleButtonState()
     });
   }
@@ -76,7 +77,7 @@ export default class FormValidator {
   };
   
   
-  _setCustomError(inputElement, validateConfig) {
+  _setCustomError(inputElement) {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     if (inputElement.type === 'url') {
       errorElement.textContent = this._errorMessageNullLink;
