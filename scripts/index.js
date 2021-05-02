@@ -1,21 +1,19 @@
 import Card from "./Card.js";
 import { initialCards } from "./initialCards.js";
-import  FormValidator from "./FormValidator.js";
-export {validateConfig};
-
+import FormValidator from "./FormValidator.js";
+export { validateConfig };
 
 const validateConfig = {
-  formSelector: '.popup__container',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-  errorMessageNullInput: 'Вы пропустили это поле.',
-  errorMessageNullLink: 'Введите адрес сайта.',
-  popupСontainerAdd: '.popup__container_add'
+  formSelector: ".popup__container",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+  errorMessageNullInput: "Вы пропустили это поле.",
+  errorMessageNullLink: "Введите адрес сайта.",
+  popupСontainerAdd: ".popup__container_add",
 };
-
 
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const openEditProfilePopupBtn = document.querySelector(".profile__edit-button");
@@ -45,13 +43,10 @@ const newLink = document.querySelector('[name="link"]');
 const popupСontainerAdd = document.querySelector(".popup__container_add");
 const deleteCardBtn = document.querySelector(".card__delete");
 const buttonElement = document.querySelector(validateConfig.submitButtonSelector);
-const popupContAdd = new FormValidator (validateConfig, document.querySelector('.popup__container_add'));
-popupContAdd.enableValidation()
-const popupCont = new FormValidator (validateConfig, document.querySelector('.popup__container'));
-popupCont.enableValidation()
-
-
-
+const popupContAdd = new FormValidator(validateConfig, document.querySelector(".popup__container_add"));
+popupContAdd.enableValidation();
+const popupCont = new FormValidator(validateConfig, document.querySelector(".popup__container"));
+popupCont.enableValidation();
 
 /* действие открытие модального окна */
 function openPopup(element) {
@@ -65,8 +60,6 @@ function openEditProfilePopup() {
   openPopup(popupEditProfile);
   popupCont.removeInputError();
 }
-
-
 
 /* действие закрытие модального окна */
 function closePopup(element) {
@@ -103,10 +96,9 @@ function createElement(item) {
 }
 function renderInitialCards() {
   initialCards.forEach((item) => {
-  const cardElement = createElement(item);  
-  document.querySelector(".cards").append(cardElement);
+    const cardElement = createElement(item);
+    document.querySelector(".cards").append(cardElement);
   });
-
 }
 
 renderInitialCards();
@@ -122,7 +114,7 @@ function openEddPopupCard(element) {
   popupСontainerAdd.reset();
   openPopup(popupAdd);
   popupContAdd.removeInputError();
-} 
+}
 
 function openFullImage(name, link) {
   document.querySelector(".popup__image").src = link;
@@ -130,7 +122,6 @@ function openFullImage(name, link) {
   openPopup(document.querySelector(".popup_type_image"));
 }
 
- 
 closeBtnpopupImage.addEventListener("click", () => closePopup(popupImage));
 popupСontainerAdd.addEventListener("submit", handleAddCard);
 document.addEventListener("click", closePopupClick);
