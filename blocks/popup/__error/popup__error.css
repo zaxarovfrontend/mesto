@@ -12,7 +12,7 @@
 
 
 
- @media screen and (min-width: 1280px) {
+ @media screen and (min-width: 800px) {
   .popup__error {
    width: 361px;
    font-size: 14px;

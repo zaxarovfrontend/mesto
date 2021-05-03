@@ -49,9 +49,9 @@
       </article>
     </template>
     <!-- popup 1>-->
-    <article class="popup popup_type_edit-profile">
+    <div class="popup popup_type_edit-profile">
       <div class="popup__overlay"></div>
-      <form name="form-container" class="popup__container" novalidate>
+      <form name="form-container" class="popup__container popup__container_type_edit-profile" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
         <input type="text" name="name-input" id="name-input" minlength="2"  maxlength="40" class="popup__input" placeholder="Имя" required />
         <span class="popup__error" id="name-input-error" ></span>
@@ -60,9 +60,9 @@
         <button type="submit" class="popup__submit-button hover">Cохранить</button>
         <button type="button" class="popup__close-button popup__close-button_type_edit hover"></button>
       </form>
-    </article>
+    </div>
     <!-- popup 2>-->
-    <article class="popup popup_type_add" >
+    <div class="popup popup_type_add" >
       <div class="popup__overlay"></div>
       <form name="form-container" class="popup__container popup__container_add" novalidate>
         <h2 class="popup__title popup__title_style">Новое место</h2>
@@ -73,17 +73,17 @@
         <button type="submit" class="popup__submit-button popup__submit-button_style hover">Cоздать</button>
         <button type="button" class="popup__close-button popup__close-button_type_add hover"></button>
       </form>
-    </article>
+    </div>
   
     <!-- popup 3-->
-    <article class="popup popup_type_image">
+    <div class="popup popup_type_image">
       <div class="popup__overlay"></div>
       <figure class="popup__figure">
         <img src="#" class="popup__image" alt="фотография" />
         <figcaption class="popup__caption"></figcaption>
         <button type="button" class="popup__close-button popup__close-button_type_image hover"></button>
       </figure>
-    </article>
+    </div>
    
     <script type="module" src="./scripts/index.js"></script>
   </body>
