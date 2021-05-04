@@ -22,22 +22,20 @@ const openAddCardPopupBtn = document.querySelector(".profile__add-button");
 const closeAddCardPopupBtn = document.querySelector(".popup__close-button_type_add");
 const popupAdd = document.querySelector(".popup_type_add");
 const cardOnline = document.querySelector(".cards");
-const cardTemplate = document.querySelector(".card-template").content;
-const popupImage = document.querySelector(".popup_type_image");
+const cardTemplate = (".card-template");
+const popupTypeImage = document.querySelector(".popup_type_image");
 const pupupImageCard = document.querySelector(".popup__image");
 const closeBtnpopupImage = document.querySelector(".popup__close-button_type_image");
 const popupImageTitle = document.querySelector(".popup__caption");
 const newCardTitle = document.querySelector('[name="title"]');
 const newLink = document.querySelector('[name="link"]');
 const formAddCard = document.querySelector(".popup__container_add");
-const deleteCardBtn = document.querySelector(".card__delete");
-const buttonElement = document.querySelector(validateConfig.submitButtonSelector);
 const popupСontainerAdd = document.querySelector(".popup__container_add");
-const popupContAdd = new FormValidator(validateConfig, popupСontainerAdd);
-popupContAdd.enableValidation();
+const validatorAddCard = new FormValidator(validateConfig, popupСontainerAdd);
+validatorAddCard.enableValidation();
 const popupСontainerEdit = document.querySelector(".popup__container_type_edit-profile");
-const popupCont = new FormValidator(validateConfig, popupСontainerEdit);
-popupCont.enableValidation();
+const validatorEditProfile = new FormValidator(validateConfig, popupСontainerEdit);
+validatorEditProfile.enableValidation();
 
 
 /* действие открытие модального окна */
@@ -50,7 +48,7 @@ function openEditProfilePopup() {
   nameInput.value = newProfileTitle.textContent;
   jobInput.value = newProfileText.textContent;
   openPopup(popupEditProfile);
-  popupCont.removeInputError();
+  validatorEditProfile.removeInputError();
 }
 
 /* действие закрытие модального окна */
@@ -82,14 +80,14 @@ function handleEditProfileFormSubmit(evt) {
 }
 
 function createElement(item) {
-  const card = new Card(item, ".card-template", openFullImage);
+  const card = new Card(item, cardTemplate, openFullImage);
   const cardElement = card.generateCard();
   return cardElement;
 }
 function renderInitialCards() {
   initialCards.forEach((item) => {
     const cardElement = createElement(item);
-    document.querySelector(".cards").append(cardElement);
+    cardOnline.append(cardElement);
   });
 }
 
@@ -105,17 +103,17 @@ function handleAddCardSubmit(evt) {
 function openAddCardPopup(element) {
   formAddCard.reset();
   openPopup(popupAdd);
-  popupContAdd.removeInputError();
+  validatorAddCard.removeInputError();
 }
 
 function openFullImage(name, link) {
-  document.querySelector(".popup__image").src = link;
-  document.querySelector(".popup__caption").alt = name;
-  document.querySelector(".popup__caption").textContent = name;
-  openPopup(popupImage);
+  pupupImageCard.src = link;
+  pupupImageCard.alt = name;
+  popupImageTitle.textContent = name;
+  openPopup(popupTypeImage);
 }
 
-closeBtnpopupImage.addEventListener("click", () => closePopup(popupImage));
+closeBtnpopupImage.addEventListener("click", () => closePopup(popupTypeImage));
 formAddCard.addEventListener("submit", handleAddCardSubmit);
 document.addEventListener("click", closePopupClick);
 /* Кнопка "редактировать" открывает модалку */
