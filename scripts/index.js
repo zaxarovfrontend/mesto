@@ -38,6 +38,8 @@ const validatorEditProfile = new FormValidator(validateConfig, popupСontainerEd
 validatorEditProfile.enableValidation();
 
 
+
+
 /* действие открытие модального окна */
 function openPopup(element) {
   element.classList.add("popup_opened");
