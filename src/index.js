@@ -1,7 +1,8 @@
-import Card from "./Card.js";
-import { initialCards } from "./initialCards.js";
-import FormValidator from "./FormValidator.js";
-import { validateConfig } from "./constants.js";
+import Card from "./scripts/Card.js";
+import { initialCards } from "./scripts/initialCards.js";
+import FormValidator from "./scripts/FormValidator.js";
+import { validateConfig } from "./scripts/constants.js";
+import "./index.css";
 
 
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
