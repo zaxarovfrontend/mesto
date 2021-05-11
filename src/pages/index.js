@@ -1,7 +1,7 @@
-import Card from "../scripts/Card.js";
-import { initialCards } from "../scripts/initialCards.js";
-import FormValidator from "../scripts/FormValidator.js";
-import { validateConfig } from "../scripts/constants.js";
+import Card from "../scripts/components/Card";
+import { initialCards } from "../scripts/utils/initialCards.js";
+import FormValidator from "../scripts/components/FormValidator";
+import { validateConfig } from "../scripts/utils/constants.js";
 import "./index.css";
 
 
