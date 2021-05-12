@@ -3,7 +3,7 @@ import { initialCards } from "../scripts/utils/initialCards.js";
 import FormValidator from "../scripts/components/FormValidator";
 import { validateConfig } from "../scripts/utils/constants.js";
 import "./index.css";
-
+import Section from "../scripts/components/Section.js";
 
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const openEditProfilePopupBtn = document.querySelector(".profile__edit-button");
@@ -23,7 +23,6 @@ const openAddCardPopupBtn = document.querySelector(".profile__add-button");
 const closeAddCardPopupBtn = document.querySelector(".popup__close-button_type_add");
 const popupAdd = document.querySelector(".popup_type_add");
 const cardOnline = document.querySelector(".cards");
-const cardTemplate = (".card-template");
 const popupTypeImage = document.querySelector(".popup_type_image");
 const pupupImageCard = document.querySelector(".popup__image");
 const closeBtnpopupImage = document.querySelector(".popup__close-button_type_image");
@@ -82,19 +81,6 @@ function handleEditProfileFormSubmit(evt) {
   closePopup(popupEditProfile);
 }
 
-function createElement(item) {
-  const card = new Card(item, cardTemplate, openFullImage);
-  const cardElement = card.generateCard();
-  return cardElement;
-}
-function renderInitialCards() {
-  initialCards.forEach((item) => {
-    const cardElement = createElement(item);
-    cardOnline.append(cardElement);
-  });
-}
-
-renderInitialCards();
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
@@ -116,7 +102,9 @@ function openFullImage(name, link) {
   openPopup(popupTypeImage);
 }
 
-closeBtnpopupImage.addEventListener("click", () => closePopup(popupTypeImage));
+const Section = new Section({ items:initialCards, renderer: "renderer"}, '.cards');
+
+//closeBtnpopupImage.addEventListener("click", () => closePopup(popupTypeImage));
 formAddCard.addEventListener("submit", handleAddCardSubmit);
 document.addEventListener("click", closePopupClick);
 /* Кнопка "редактировать" открывает модалку */
