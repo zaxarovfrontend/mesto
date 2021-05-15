@@ -102,7 +102,7 @@ function openFullImage(name, link) {
   pupupImageCard.src = link;
   pupupImageCard.alt = name;
   popupImageTitle.textContent = name;
-  //openPopup(popupTypeImage);
+  openPopup(popupTypeImage);
 }
 
 const section = new Section({ items:initialCards, renderer: "renderer"}, '.cards');

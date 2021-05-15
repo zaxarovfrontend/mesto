@@ -1,10 +1,10 @@
 export default class Card {
-  constructor(data, openFullImage) {
+  constructor(data, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._image = data.link;
     this._cardSelector = ".card-template";
-    this._openFullImage = openFullImage;
+    this._openFullImage = handleCardClick;
     this._cardImage = ".card__image";
     this._cardLike = ".card__like-button";
     this._cardDelete = ".card__delete";

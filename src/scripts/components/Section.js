@@ -17,7 +17,13 @@ export default class Section {
 
   // создание нового элеменита карточки
   addItem (item) {
-    const card = new Card(item);
+    const card = new Card(item, (name,link) => {
+      const pupupImageCard = document.querySelector(".popup__image");
+      const popupImageTitle = document.querySelector(".popup__caption");
+      pupupImageCard.src = link;
+      pupupImageCard.alt = name;
+      popupImageTitle.textContent = name;
+    })
     const cardElement = card.generateCard();
     return cardElement; 
   }
