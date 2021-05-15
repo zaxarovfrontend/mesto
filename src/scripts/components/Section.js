@@ -1,3 +1,6 @@
+import Card from "./Card";
+
+
 export default class Section {
   constructor({ items, renderer }, containerSelector) {
     this._renderedItems = items;
@@ -14,9 +17,8 @@ export default class Section {
 
   // создание нового элеменита карточки
   addItem (item) {
-    const card = new Card(item, openFullImage);
+    const card = new Card(item);
     const cardElement = card.generateCard();
     return cardElement; 
   }
-
 }

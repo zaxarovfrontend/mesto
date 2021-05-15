@@ -1,4 +1,4 @@
-import Card from "../scripts/components/Card";
+import Card from "../scripts/components/Card.js";
 import { initialCards } from "../scripts/utils/initialCards.js";
 import FormValidator from "../scripts/components/FormValidator";
 import { validateConfig } from "../scripts/utils/constants.js";
@@ -25,22 +25,25 @@ const popupAdd = document.querySelector(".popup_type_add");
 const cardOnline = document.querySelector(".cards");
 const popupTypeImage = document.querySelector(".popup_type_image");
 const pupupImageCard = document.querySelector(".popup__image");
-const closeBtnpopupImage = document.querySelector(".popup__close-button_type_image");
+//const closeBtnpopupImage = document.querySelector(".popup__close-button_type_image");
 const popupImageTitle = document.querySelector(".popup__caption");
 const newCardTitle = document.querySelector('[name="title"]');
 const newLink = document.querySelector('[name="link"]');
 const formAddCard = document.querySelector(".popup__container_add");
-const popupСontainerAdd = document.querySelector(".popup__container_add");
-const validatorAddCard = new FormValidator(validateConfig, popupСontainerAdd);
-validatorAddCard.enableValidation();
-const popupСontainerEdit = document.querySelector(".popup__container_type_edit-profile");
-const validatorEditProfile = new FormValidator(validateConfig, popupСontainerEdit);
-validatorEditProfile.enableValidation();
+//const popupСontainerAdd = document.querySelector(".popup__container_add");
+//const validatorAddCard = new FormValidator(validateConfig, popupСontainerAdd);
+
+//const popupСontainerEdit = document.querySelector(".popup__container_type_edit-profile");
+//const validatorEditProfile = new FormValidator(validateConfig, popupСontainerEdit);
+
+
+//validatorAddCard.enableValidation();
+//validatorEditProfile.enableValidation();
 
 
 
 
-/* действие открытие модального окна */
+/* действие открытие модального окна 
 function openPopup(element) {
   element.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupEsc);
@@ -53,7 +56,7 @@ function openEditProfilePopup() {
   validatorEditProfile.removeInputError();
 }
 
-/* действие закрытие модального окна */
+/* действие закрытие модального окна 
 function closePopup(element) {
   element.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEsc);
@@ -72,45 +75,47 @@ function closePopupClick(evt) {
     closePopup(element);
   }
 }
-
-/* функция с обработчиком кнопки */
+*/
+ //функция с обработчиком кнопки
 function handleEditProfileFormSubmit(evt) {
   evt.preventDefault();
   newProfileTitle.textContent = nameInput.value;
   newProfileText.textContent = jobInput.value;
-  closePopup(popupEditProfile);
+  //closePopup(popupEditProfile);
 }
 
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  cardOnline.prepend(createElement({ name: newCardTitle.value, link: newLink.value }));
-  closePopup(popupAdd);
+  //cardOnline.prepend(createElement({ name: newCardTitle.value, link: newLink.value }));
+  //closePopup(popupAdd);
   formAddCard.reset();
 }
 
 function openAddCardPopup(element) {
   formAddCard.reset();
-  openPopup(popupAdd);
-  validatorAddCard.removeInputError();
+  //openPopup(popupAdd);
+  //validatorAddCard.removeInputError();
 }
 
 function openFullImage(name, link) {
   pupupImageCard.src = link;
   pupupImageCard.alt = name;
   popupImageTitle.textContent = name;
-  openPopup(popupTypeImage);
+  //openPopup(popupTypeImage);
 }
 
-const Section = new Section({ items:initialCards, renderer: "renderer"}, '.cards');
+const section = new Section({ items:initialCards, renderer: "renderer"}, '.cards');
+section.renderer();
+
 
 //closeBtnpopupImage.addEventListener("click", () => closePopup(popupTypeImage));
 formAddCard.addEventListener("submit", handleAddCardSubmit);
-document.addEventListener("click", closePopupClick);
+//document.addEventListener("click", closePopupClick);
 /* Кнопка "редактировать" открывает модалку */
-openEditProfilePopupBtn.addEventListener("click", openEditProfilePopup);
+//openEditProfilePopupBtn.addEventListener("click", openEditProfilePopup);
 /* Кнопка "крестик" (закрыть модалку) */
-closeEditProfilePopupBtn.addEventListener("click", () => closePopup(popupEditProfile));
+//closeEditProfilePopupBtn.addEventListener("click", () => closePopup(popupEditProfile));
 formEditProfile.addEventListener("submit", handleEditProfileFormSubmit);
 openAddCardPopupBtn.addEventListener("click", openAddCardPopup);
-closeAddCardPopupBtn.addEventListener("click", () => closePopup(popupAdd));
+//closeAddCardPopupBtn.addEventListener("click", () => closePopup(popupAdd));
