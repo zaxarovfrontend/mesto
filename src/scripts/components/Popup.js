@@ -1,7 +1,4 @@
 export default class Popup {
-  element;
-  evt;
-
   constructor(popupSelector) {
    this._popupSelector = popupSelector;
   }

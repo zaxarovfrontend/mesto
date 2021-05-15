@@ -4,6 +4,9 @@ import FormValidator from "../scripts/components/FormValidator";
 import { validateConfig } from "../scripts/utils/constants.js";
 import "./index.css";
 import Section from "../scripts/components/Section.js";
+import PopupWithImage from "../scripts/components/PopupWithImage";
+
+
 
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const openEditProfilePopupBtn = document.querySelector(".profile__edit-button");
@@ -39,6 +42,17 @@ const formAddCard = document.querySelector(".popup__container_add");
 
 //validatorAddCard.enableValidation();
 //validatorEditProfile.enableValidation();
+
+// создание нового элеменита карточки. Где мы из массива берем ссылку, название картинки и альт.
+const section = new Section({ items:initialCards, renderer: (item) => {
+    const popupImage = new PopupWithImage(item.name, item.link);
+    const card = new Card(item, popupImage.open)
+    const cardElement = card.generateCard();
+    return cardElement;
+  }}, '.cards');
+section.renderer();
+
+
 
 
 
@@ -105,8 +119,7 @@ function openFullImage(name, link) {
   openPopup(popupTypeImage);
 }
 
-const section = new Section({ items:initialCards, renderer: "renderer"}, '.cards');
-section.renderer();
+
 
 
 //closeBtnpopupImage.addEventListener("click", () => closePopup(popupTypeImage));
