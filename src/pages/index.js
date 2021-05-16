@@ -28,28 +28,32 @@ const popupAdd = document.querySelector(".popup_type_add");
 const cardOnline = document.querySelector(".cards");
 const popupTypeImage = document.querySelector(".popup_type_image");
 const pupupImageCard = document.querySelector(".popup__image");
-//const closeBtnpopupImage = document.querySelector(".popup__close-button_type_image");
+const closeBtnpopupImage = document.querySelector(".popup__close-button_type_image");
 const popupImageTitle = document.querySelector(".popup__caption");
 const newCardTitle = document.querySelector('[name="title"]');
 const newLink = document.querySelector('[name="link"]');
 const formAddCard = document.querySelector(".popup__container_add");
-//const popupСontainerAdd = document.querySelector(".popup__container_add");
-//const validatorAddCard = new FormValidator(validateConfig, popupСontainerAdd);
+const popupСontainerAdd = document.querySelector(".popup__container_add");
+const validatorAddCard = new FormValidator(validateConfig, popupСontainerAdd);
 
-//const popupСontainerEdit = document.querySelector(".popup__container_type_edit-profile");
-//const validatorEditProfile = new FormValidator(validateConfig, popupСontainerEdit);
+const popupСontainerEdit = document.querySelector(".popup__container_type_edit-profile");
+const validatorEditProfile = new FormValidator(validateConfig, popupСontainerEdit);
 
 
-//validatorAddCard.enableValidation();
-//validatorEditProfile.enableValidation();
+validatorAddCard.enableValidation();
+validatorEditProfile.enableValidation();
+
+const popupImage = new PopupWithImage('.popup_type_image');
+
 
 // создание нового элеменита карточки. Где мы из массива берем ссылку, название картинки и альт.
 const section = new Section({ items:initialCards, renderer: (item) => {
-    const popupImage = new PopupWithImage(item.name, item.link);
-    const card = new Card(item, popupImage.open)
-    const cardElement = card.generateCard();
-    return cardElement;
-  }}, '.cards');
+        const handlerCardClick = () => popupImage.open(item);
+
+        const card = new Card(item, handlerCardClick)
+        const cardElement = card.generateCard();
+        return cardElement;
+    }}, '.cards');
 section.renderer();
 
 
@@ -70,59 +74,54 @@ function openEditProfilePopup() {
   validatorEditProfile.removeInputError();
 }
 
-/* действие закрытие модального окна 
+действие закрытие модального окна
 function closePopup(element) {
   element.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEsc);
 }
-
+/*
 function closePopupEsc(evt) {
   if (evt.key === "Escape") {
     const element = document.querySelector(".popup_opened");
     closePopup(element);
   }
 }
-
+*/
 function closePopupClick(evt) {
   if (evt.target.classList.contains("popup__overlay")) {
     const element = document.querySelector(".popup_opened");
     closePopup(element);
   }
 }
-*/
+
  //функция с обработчиком кнопки
 function handleEditProfileFormSubmit(evt) {
   evt.preventDefault();
   newProfileTitle.textContent = nameInput.value;
   newProfileText.textContent = jobInput.value;
-  //closePopup(popupEditProfile);
+  closePopup(popupEditProfile);
 }
 
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
   //cardOnline.prepend(createElement({ name: newCardTitle.value, link: newLink.value }));
-  //closePopup(popupAdd);
+  closePopup(popupAdd);
   formAddCard.reset();
 }
 
 function openAddCardPopup(element) {
   formAddCard.reset();
-  //openPopup(popupAdd);
-  //validatorAddCard.removeInputError();
+  openPopup(popupAdd);
+  validatorAddCard.removeInputError();
 }
 
-function openFullImage(name, link) {
-  pupupImageCard.src = link;
-  pupupImageCard.alt = name;
-  popupImageTitle.textContent = name;
-  openPopup(popupTypeImage);
-}
+//setEventListeners(){
+    //this._popupSelector.addEventListener("keydown", () => {
+        //this._handleEscClose();
+    //})
 
 
-
-
-//closeBtnpopupImage.addEventListener("click", () => closePopup(popupTypeImage));
 formAddCard.addEventListener("submit", handleAddCardSubmit);
 //document.addEventListener("click", closePopupClick);
 /* Кнопка "редактировать" открывает модалку */
