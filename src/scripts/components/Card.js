@@ -1,5 +1,4 @@
 
-
 export default class Card {
   constructor(data, handleCardClick) {
     this._name = data.name;

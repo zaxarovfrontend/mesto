@@ -95,11 +95,10 @@ function closePopupClick(evt) {
 }
 
  //функция с обработчиком кнопки
-function handleEditProfileFormSubmit(evt) {
-  evt.preventDefault();
+function handleEditProfileFormSubmit(name) {
   newProfileTitle.textContent = nameInput.value;
   newProfileText.textContent = jobInput.value;
-  closePopup(popupEditProfile);
+  close();
 }
 
 
@@ -131,3 +130,4 @@ formAddCard.addEventListener("submit", handleAddCardSubmit);
 formEditProfile.addEventListener("submit", handleEditProfileFormSubmit);
 openAddCardPopupBtn.addEventListener("click", openAddCardPopup);
 //closeAddCardPopupBtn.addEventListener("click", () => closePopup(popupAdd));
+closeBtnpopupImage.addEventListener("click",close);

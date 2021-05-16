@@ -2,28 +2,32 @@ import Popup from "./Popup";
 
 export default class PopupWithForm extends Popup {
 
-  constructor(popupSelector) {
-    super();
-    this._popupSelector = popupSelector;
-    this._handleAddCardSubmit = handleAddCardSubmit;
-    this._handleEditProfileFormSubmit = handleEditProfileFormSubmit;
-    this._newProfileTitle = newProfileTitle;
-    this._newProfileText = newProfileText;
-    this._nameInput = nameInput;
-    this._jobInput = jobInput;
-    this._formAddCard = formAddCard;
-    this._formEditProfile = this.formEditProfile;
-  }  
+    constructor(popupSelector, handleEditProfileFormSubmit) {
+        super(popupSelector);
+        this._popupSelector = popupSelector;
+        this._handleEditProfileFormSubmit = handleEditProfileFormSubmit.bind(this);
+        this._formEditProfile = this._formEditProfile;
+    }
 
-  _getInputValues() {
-    this.newProfileTitle.textContent = this.nameInput.value;
-    this.newProfileText.textContent = this.jobInput.value;
-  };
+    _getInputValues() {
+        const values = {}
+        const inputs = [...this._formEditProfile.querySelectorAll('.popup__input')]
+        inputs.forEach(input => {
+            values[input.name] = input.value
+        })
+        return values
+    };
 
-_setEventListeners() {
-  this.formAddCard.addEventListener("submit", this._handleAddCardSubmit);
-  this.formEditProfile.addEventListener("submit", this._handleEditProfileFormSubmit);
-};
+    _setEventListeners() {
+        super.setEventListeners()
+        this._popupSelector.querySelector(".profile__edd-button").addEventListener('click', () => {
+            super.open()
+        })
 
-
+        close()
+        {
+            this._formEditProfile.reset();
+            super.close()
+        }
+    }
 }
