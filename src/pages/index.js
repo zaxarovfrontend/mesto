@@ -87,12 +87,7 @@ function closePopupEsc(evt) {
   }
 }
 */
-function closePopupClick(evt) {
-  if (evt.target.classList.contains("popup__overlay")) {
-    const element = document.querySelector(".popup_opened");
-    closePopup(element);
-  }
-}
+
 
  //функция с обработчиком кнопки
 function handleEditProfileFormSubmit(name) {
