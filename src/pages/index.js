@@ -6,7 +6,7 @@ import "./index.css";
 import Section from "../scripts/components/Section.js";
 import PopupWithImage from "../scripts/components/PopupWithImage";
 import PopupWithForm from "../scripts/components/PopupWithForm";
-import UserInfo from  "../scripts/components/UserInfo";
+import { UserInfo } from  "../scripts/components/UserInfo";
 import Popup from "../scripts/components/Popup";
 
 
@@ -18,13 +18,13 @@ const openEditProfilePopupBtn = document.querySelector(".profile__edit-button");
 const openAddCardPopupBtn = document.querySelector(".profile__add-button");
 
 /* Переменая крестик закрытия */
-//const closeEditProfilePopupBtn = popupEditProfile.querySelector(".popup__close-button_type_edit");
+const closeEditProfilePopupBtn = popupEditProfile.querySelector(".popup__close-button_type_edit");
 /* Переменая для контейнера с формой */
-//const formEditProfile = popupEditProfile.querySelector(".popup__container_type_edit-profile");
+const formEditProfile = popupEditProfile.querySelector(".popup__container_type_edit-profile");
 /* Переменая для name */
-//const nameInput = formEditProfile.querySelector('[name="name-input"]');
+const nameInput = formEditProfile.querySelector('[name="name-input"]');
 /* Переменая для job */
-//const jobInput = formEditProfile.querySelector('[name="job-input"]');
+const jobInput = formEditProfile.querySelector('[name="job-input"]');
 /* Переменая для заголовка куда будет добавляться новый текст */
 const newProfileTitle = document.querySelector(".profile__title");
 /* Переменая для текста работы куда будет добавляться новый текст */
@@ -87,9 +87,9 @@ function closePopup(element) {
 
 
 function handleEditProfileFormSubmit() {
-  const getProfileData = userInfo.getUserInfo(options);
-    name.value = getProfileData.name;
-    jobName.value = getProfileData.jobName;
+  const getProfileData = UserInfo.getUserInfo();
+    nameInput.value = getProfileData.name;
+    jobInput.value = getProfileData.jobName;
   close();
 }
 
@@ -133,7 +133,7 @@ popupAddCard.setEventListeners();
 openEditProfilePopupBtn.addEventListener("click", () => popupEditProfile.open());
 openAddCardPopupBtn.addEventListener("click", () => popupAddCard.open());
 /* Кнопка "крестик" (закрыть модалку) */
-//closeEditProfilePopupBtn.addEventListener("click", () => closePopup(popupEditProfile));
+closeEditProfilePopupBtn.addEventListener("click", () => popupEditProfile.close());
 //formEditProfile.addEventListener("submit", handleEditProfileFormSubmit);
 
 //closeAddCardPopupBtn.addEventListener("click", () => closePopup(popupAdd));
