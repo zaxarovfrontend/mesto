@@ -135,6 +135,5 @@ openAddCardPopupBtn.addEventListener("click", () => popupAddCard.open());
 /* Кнопка "крестик" (закрыть модалку) */
 closeEditProfilePopupBtn.addEventListener("click", () => popupEditProfile.close());
 //formEditProfile.addEventListener("submit", handleEditProfileFormSubmit);
-
 //closeAddCardPopupBtn.addEventListener("click", () => closePopup(popupAdd));
 //closeBtnpopupImage.addEventListener("click",close);
