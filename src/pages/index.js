@@ -6,6 +6,7 @@ import "./index.css";
 import Section from "../scripts/components/Section.js";
 import PopupWithImage from "../scripts/components/PopupWithImage";
 import PopupWithForm from "../scripts/components/PopupWithForm";
+import UserInfo from  "../scripts/components/UserInfo";
 import Popup from "../scripts/components/Popup";
 
 
@@ -84,13 +85,14 @@ function closePopup(element) {
 */
 
 
-/* //функция с обработчиком кнопки
+
 function handleEditProfileFormSubmit() {
-  newProfileTitle.textContent = nameInput.value;
-  newProfileText.textContent = jobInput.value;
+  const getProfileData = userInfo.getUserInfo(options);
+    name.value = getProfileData.name;
+    jobName.value = getProfileData.jobName;
   close();
 }
-*/
+
 
 
 function handleAddCardSubmit(evt) {
@@ -107,8 +109,9 @@ function openAddCardPopup(element) {
 }
 
 const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
-    handlerSubmit: () => {
-        console.log('handler')
+    handlerSubmit: (options) => {
+        userInfo.setUserInfo(options);
+        popupEditProfile.close();
     }
 })
 
@@ -124,7 +127,7 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 
-formAddCard.addEventListener("submit", handleAddCardSubmit);
+//formAddCard.addEventListener("submit", handleAddCardSubmit);
 //document.addEventListener("click", closePopupClick);
 /* Кнопка "редактировать" открывает модалку */
 openEditProfilePopupBtn.addEventListener("click", () => popupEditProfile.open());
