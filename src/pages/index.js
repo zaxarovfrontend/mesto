@@ -5,6 +5,8 @@ import { validateConfig } from "../scripts/utils/constants.js";
 import "./index.css";
 import Section from "../scripts/components/Section.js";
 import PopupWithImage from "../scripts/components/PopupWithImage";
+import PopupWithForm from "../scripts/components/PopupWithForm";
+import Popup from "../scripts/components/Popup";
 
 
 
@@ -59,48 +61,38 @@ section.renderer();
 
 
 
-
-
-/* действие открытие модального окна 
-function openPopup(element) {
-  element.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupEsc);
-}
-
 function openEditProfilePopup() {
   nameInput.value = newProfileTitle.textContent;
   jobInput.value = newProfileText.textContent;
-  openPopup(popupEditProfile);
+  popupEditProfile.open();
   validatorEditProfile.removeInputError();
 }
 
+
+/*
 действие закрытие модального окна
 function closePopup(element) {
   element.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEsc);
 }
 /*
-function closePopupEsc(evt) {
-  if (evt.key === "Escape") {
-    const element = document.querySelector(".popup_opened");
-    closePopup(element);
-  }
-}
+
 */
 
 
- //функция с обработчиком кнопки
-function handleEditProfileFormSubmit(name) {
+/* //функция с обработчиком кнопки
+function handleEditProfileFormSubmit() {
   newProfileTitle.textContent = nameInput.value;
   newProfileText.textContent = jobInput.value;
   close();
 }
+*/
 
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
   //cardOnline.prepend(createElement({ name: newCardTitle.value, link: newLink.value }));
-  closePopup(popupAdd);
+  popupAdd.close();
   formAddCard.reset();
 }
 
@@ -110,19 +102,15 @@ function openAddCardPopup(element) {
   validatorAddCard.removeInputError();
 }
 
-//setEventListeners(){
-    //this._popupSelector.addEventListener("keydown", () => {
-        //this._handleEscClose();
-    //})
-
+popupEditProfile.setEventListeners();
 
 formAddCard.addEventListener("submit", handleAddCardSubmit);
 //document.addEventListener("click", closePopupClick);
 /* Кнопка "редактировать" открывает модалку */
-//openEditProfilePopupBtn.addEventListener("click", openEditProfilePopup);
+openEditProfilePopupBtn.addEventListener("click", openEditProfilePopup);
 /* Кнопка "крестик" (закрыть модалку) */
 //closeEditProfilePopupBtn.addEventListener("click", () => closePopup(popupEditProfile));
 formEditProfile.addEventListener("submit", handleEditProfileFormSubmit);
 openAddCardPopupBtn.addEventListener("click", openAddCardPopup);
 //closeAddCardPopupBtn.addEventListener("click", () => closePopup(popupAdd));
-closeBtnpopupImage.addEventListener("click",close);
+//closeBtnpopupImage.addEventListener("click",close);
