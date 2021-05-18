@@ -1,5 +1,3 @@
-import Popup from "./Popup";
-
 export default class UserInfo {
 
     constructor(name, jobName) {
@@ -9,13 +7,13 @@ export default class UserInfo {
 
 
     getUserInfo() {
-        this._renderer.forEach((item) => {
-            const profileEdit = this._renderer(item);
-        }
-            this.addItem(cardElement);
+      const name = this._name.textContent;
+      const jobName = this._jobName.textContent;
+      return {name, jobName};
     };
 
-    setUserInfo() {
-
+    setUserInfo(data) {
+      this._name.textContent = data.name;
+      this._jobName.textContent = data._jobName
     };
 }

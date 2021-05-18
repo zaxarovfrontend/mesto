@@ -2,32 +2,29 @@ import Popup from "./Popup";
 
 export default class PopupWithForm extends Popup {
 
-    constructor(popupSelector, handleEditProfileFormSubmit) {
-        super(popupSelector);
-        this._popupSelector = popupSelector;
-        this._handleEditProfileFormSubmit = handleEditProfileFormSubmit.bind(this);
-        this._formEditProfile = this._formEditProfile;
+    constructor(popup, {handlerSubmit}) {
+        super(popup);
+        this._form = document.querySelector('.popup__container');
+        this._handlerSubmit = handlerSubmit;
     }
 
     _getInputValues() {
-        const values = {}
-        const inputs = [...this._formEditProfile.querySelectorAll('.popup__input')]
-        inputs.forEach(input => {
-            values[input.name] = input.value
-        })
-        return values
+        this._values = {};
+        this._inputs = this._form.querySelectorAll('.popup__input')
+        this._inputs.forEach((input) => (this._values[input.name]= input.value));
+        return  this._values;
     };
 
     _setEventListeners() {
-        super.setEventListeners()
-        this._popupSelector.querySelector(".profile__edd-button").addEventListener('click', () => {
-            super.open()
+        super.setEventListeners();
+        this._form.addEventListener('submit', (evt) => {evt.preventDefault();
+         this._handlerSubmit(this._getInputValues());
         })
+    }
 
         close()
         {
-            this._formEditProfile.reset();
-            super.close()
+            super.close();
+            this._form.reset();
         }
-    }
 }
