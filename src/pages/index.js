@@ -25,10 +25,7 @@ const openAddCardPopupBtn = document.querySelector(".profile__add-button");
 //const nameInput = formEditProfile.querySelector('[name="name-input"]');
 /* Переменая для job */
 //const jobInput = formEditProfile.querySelector('[name="job-input"]');
-/* Переменая для заголовка куда будет добавляться новый текст */
-const newProfileTitle = document.querySelector(".profile__title");
-/* Переменая для текста работы куда будет добавляться новый текст */
-const newProfileText = document.querySelector(".profile__text");
+
 
 const closeAddCardPopupBtn = document.querySelector(".popup__close-button_type_add");
 const popupAdd = document.querySelector(".popup_type_add");
@@ -84,15 +81,20 @@ function closePopup(element) {
 
 */
 
+/* Переменая для заголовка куда будет добавляться новый текст */
+const newProfileTitle = document.querySelector(".profile__title");
+/* Переменая для текста работы куда будет добавляться новый текст */
+const newProfileText = document.querySelector(".profile__text");
 
+const userInfo = new UserInfo(newProfileTitle, newProfileText);
 
 function handleEditProfileFormSubmit() {
-    const nameInput = document.querySelectorAll('[name="name-input"]');
-    const jobInput = document.querySelectorAll('[name="job-input"]');
+    const nameInput = document.querySelector('.popup__input_type-name');
+    const jobInput = document.querySelector('.popup__input_type-job');
     const getProfileData = userInfo.getUserInfo();
     nameInput.value = getProfileData.name;
     jobInput.value = getProfileData.jobName;
-  close();
+    popupEditProfile.open();
 }
 
 
@@ -132,7 +134,7 @@ popupAddCard.setEventListeners();
 //formAddCard.addEventListener("submit", handleAddCardSubmit);
 //document.addEventListener("click", closePopupClick);
 /* Кнопка "редактировать" открывает модалку */
-openEditProfilePopupBtn.addEventListener("click", () => popupEditProfile.open());
+openEditProfilePopupBtn.addEventListener("click", handleEditProfileFormSubmit);
 openAddCardPopupBtn.addEventListener("click", () => popupAddCard.open());
 /* Кнопка "крестик" (закрыть модалку) */
 //closeEditProfilePopupBtn.addEventListener("click", () => popupEditProfile.close());

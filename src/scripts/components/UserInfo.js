@@ -14,6 +14,6 @@ export class UserInfo {
 
     setUserInfo(options) {
       this._name.textContent = options.name;
-      this._jobName.textContent = options.jobName
+      this._jobName.textContent = options.jobName;
     };
 }
