@@ -21,10 +21,7 @@ const openAddCardPopupBtn = document.querySelector(".profile__add-button");
 //const closeEditProfilePopupBtn = popupEditProfile.querySelector(".popup__close-button_type_edit");
 /* Переменая для контейнера с формой */
 //const formEditProfile = popupEditProfile.querySelector(".popup__container_type_edit-profile");
-/* Переменая для name */
-//const nameInput = formEditProfile.querySelector('[name="name-input"]');
-/* Переменая для job */
-//const jobInput = formEditProfile.querySelector('[name="job-input"]');
+
 
 
 const closeAddCardPopupBtn = document.querySelector(".popup__close-button_type_add");
@@ -34,8 +31,8 @@ const popupTypeImage = document.querySelector(".popup_type_image");
 const pupupImageCard = document.querySelector(".popup__image");
 const closeBtnpopupImage = document.querySelector(".popup__close-button_type_image");
 const popupImageTitle = document.querySelector(".popup__caption");
-const newCardTitle = document.querySelector('[name="title"]');
-const newLink = document.querySelector('[name="link"]');
+
+
 const formAddCard = document.querySelector(".popup__container_add");
 const popupСontainerAdd = document.querySelector(".popup__container_add");
 const validatorAddCard = new FormValidator(validateConfig, popupСontainerAdd);
@@ -49,7 +46,6 @@ validatorEditProfile.enableValidation();
 
 const popupImage = new PopupWithImage('.popup_type_image');
 
-
 // создание нового элеменита карточки. Где мы из массива берем ссылку, название картинки и альт.
 const section = new Section({ items:initialCards, renderer: (item) => {
         const handlerCardClick = () => popupImage.open(item);
@@ -59,8 +55,6 @@ const section = new Section({ items:initialCards, renderer: (item) => {
         return cardElement;
     }}, '.cards');
 section.renderer();
-
-
 
 
 /*function openEditProfilePopup() {
@@ -80,14 +74,13 @@ function closePopup(element) {
 /*
 
 */
-
 /* Переменая для заголовка куда будет добавляться новый текст */
-const newProfileTitle = document.querySelector(".profile__title");
 /* Переменая для текста работы куда будет добавляться новый текст */
-const newProfileText = document.querySelector(".profile__text");
+const newProfileTitle = document.querySelector(".profile__title"),
+    newProfileText = document.querySelector(".profile__text"), userInfo = new UserInfo(newProfileTitle, newProfileText);
 
-const userInfo = new UserInfo(newProfileTitle, newProfileText);
 
+//сабмит профиля редактироватние
 function handleEditProfileFormSubmit() {
     const nameInput = document.querySelector('.popup__input_type-name');
     const jobInput = document.querySelector('.popup__input_type-job');
@@ -97,20 +90,26 @@ function handleEditProfileFormSubmit() {
     popupEditProfile.open();
 }
 
+/*function createElement(item) {
+    const card = new Card(item, ".card-template", openFullImage);
+    const cardElement = card.generateCard();
+    return cardElement;
+}*/
 
 
 function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  cardOnline.prepend(createElement({ name: newCardTitle.value, link: newLink.value }));
-  popupAdd.close();
+    //const newCardTitle = document.querySelector('[name="title"]');
+    //const newLink = document.querySelector('[name="link"]');
+
+    popupAddCard.close();
   formAddCard.reset();
 }
 
-function openAddCardPopup(element) {
+/*function openAddCardPopup(element) {
   formAddCard.reset();
   openPopup(popupAdd);
   validatorAddCard.removeInputError();
-}
+} */
 
 const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
     handlerSubmit: (options) => {
@@ -120,8 +119,11 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
 })
 
  const popupAddCard = new PopupWithForm('.popup_type_add', {
-    handlerSubmit: () => {
-
+    handlerSubmit: (data) => {
+        const element = card({
+            name: data.name,
+            link: data.link
+        })
     }
 })
 
@@ -131,7 +133,7 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 //popupEditProfile.addEventListener("submit", handleEditProfileFormSubmit);
-//formAddCard.addEventListener("submit", handleAddCardSubmit);
+formAddCard.addEventListener("submit", handleAddCardSubmit);
 //document.addEventListener("click", closePopupClick);
 /* Кнопка "редактировать" открывает модалку */
 openEditProfilePopupBtn.addEventListener("click", handleEditProfileFormSubmit);
