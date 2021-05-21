@@ -10,13 +10,12 @@ export default class Section {
   // рендер карточек (перебор массива с карточками)
   renderer () {
     this._renderedItems.forEach((item) => {
-      const cardElement = this._renderer(item);
-      this.addItem(cardElement);
+      this._renderer(item);
     });
   }
 
 
-  addItem (element) {
-    this._container.append(element);
+  addItem (element, toAppend) {
+    this._container[toAppend](element);
   }
 }
