@@ -7,24 +7,12 @@ import Section from "../scripts/components/Section.js";
 import PopupWithImage from "../scripts/components/PopupWithImage";
 import PopupWithForm from "../scripts/components/PopupWithForm";
 import { UserInfo } from  "../scripts/components/UserInfo";
-import Popup from "../scripts/components/Popup";
-
 
 /* кнопка открытия профиля редактирования */
 const openEditProfilePopupBtn = document.querySelector(".profile__edit-button");
 /* кнопка открытия профиля добавления карточки */
 const openAddCardPopupBtn = document.querySelector(".profile__add-button");
 
-const closeAddCardPopupBtn = document.querySelector(".popup__close-button_type_add");
-const popupAdd = document.querySelector(".popup_type_add");
-const cardOnline = document.querySelector(".cards");
-const popupTypeImage = document.querySelector(".popup_type_image");
-const pupupImageCard = document.querySelector(".popup__image");
-const closeBtnpopupImage = document.querySelector(".popup__close-button_type_image");
-const popupImageTitle = document.querySelector(".popup__caption");
-
-
-const formAddCard = document.querySelector(".popup__container_add");
 const popupContainerAdd = document.querySelector(".popup__container_add");
 const validatorAddCard = new FormValidator(validateConfig, popupContainerAdd);
 
