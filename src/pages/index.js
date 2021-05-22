@@ -8,6 +8,8 @@ import PopupWithImage from "../scripts/components/PopupWithImage";
 import PopupWithForm from "../scripts/components/PopupWithForm";
 import { UserInfo } from  "../scripts/components/UserInfo";
 
+
+const cardSelector = document.querySelector('.card-template');
 /* кнопка открытия профиля редактирования */
 const openEditProfilePopupBtn = document.querySelector(".profile__edit-button");
 /* кнопка открытия профиля добавления карточки */
@@ -18,7 +20,8 @@ const validatorAddCard = new FormValidator(validateConfig, popupContainerAdd);
 
 const popupContainerEdit = document.querySelector(".popup__container_type_edit-profile");
 const validatorEditProfile = new FormValidator(validateConfig, popupContainerEdit);
-
+const nameInput = document.querySelector('.popup__input_type-name');
+const jobInput = document.querySelector('.popup__input_type-job');
 
 validatorAddCard.enableValidation();
 validatorEditProfile.enableValidation();
@@ -39,10 +42,10 @@ const newProfileTitle = document.querySelector(".profile__title"),
     newProfileText = document.querySelector(".profile__text"), userInfo = new UserInfo(newProfileTitle, newProfileText);
 
 
-//сабмит профиля редактироватние
-function handleEditProfileFormSubmit() {
-    const nameInput = document.querySelector('.popup__input_type-name');
-    const jobInput = document.querySelector('.popup__input_type-job');
+
+//Функция открытия попапа редактирования
+function openProfilePopup() {
+
     const getProfileData = userInfo.getUserInfo();
     nameInput.value = getProfileData.name;
     jobInput.value = getProfileData.jobName;
@@ -69,11 +72,13 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
     }
 });
 
+
+
 function addCard(item) {
   const card = new Card(item,
     {handleCardClick: (name, link) => {
       popupImage.open({name, link});
-      }})
+      }}, '.card-template')
   const cardElement = card.generateCard();
 return cardElement
 };
@@ -81,9 +86,10 @@ return cardElement
 
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
+popupImage.setEventListeners();
 
 /* Кнопка "редактировать" открывает модалку */
-openEditProfilePopupBtn.addEventListener("click", handleEditProfileFormSubmit);
+openEditProfilePopupBtn.addEventListener("click", openProfilePopup);
 openAddCardPopupBtn.addEventListener("click", () => {
   validatorAddCard.removeInputError();
   popupAddCard.open()

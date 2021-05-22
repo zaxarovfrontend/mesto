@@ -33,6 +33,7 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__close-button/_type/popup__close-button_type_image.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__title/_style/popup__title_style.css);
 @import url(../blocks/popup/__submit-button/_style/popup__submit-button_style.css);
@@ -46,3 +47,4 @@
 
 /* блок hover */
 @import url(../blocks/hover/hover.css);
+
