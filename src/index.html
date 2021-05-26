@@ -15,7 +15,10 @@
       <!--Блок 2 Profile-->
       <main class="content">
         <section class="profile">
+          <div class="profile__info-block">
+          <div class="profile__edit-button-avatar"></div>
           <img class="profile__avatar" src="./images/avaterKusto.jpg" alt="фото Кусто" />
+            </div>
           <div class="profile__info">
             <div class="profile__webinfo">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -42,7 +45,10 @@
           <button class="card__delete"></button>
           <div class="card__group-container">
             <h2 class="card__title">Домбай</h2>
+            <div class="card__like_group">
             <button type="button" class="card__like-button"></button>
+              <span class="card__like-info">1</span>
+            </div>
           </div>
         </div>
       </article>
@@ -82,6 +88,28 @@
         <figcaption class="popup__caption"></figcaption>
         <button type="button" class="popup__close-button popup__close-button_type_image hover"></button>
       </figure>
+
+   <!-- popup 5 update-->
+      <div class="popup popup_type_edit-profile-update">
+        <div class="popup__overlay"></div>
+        <form name="form-container" class="popup__container popup__container_type_edit-profile" novalidate>
+          <h2 class="popup__title popup__title_type-update">Обновить аватар</h2>
+          <input type="url" name="link" id="link-input" minlength="2"  maxlength="40" class="popup__input" placeholder="Ссылка на картинку" required />
+          <span class="popup__error" id="link-input-error" ></span>
+          <button type="submit" class="popup__submit-button hover">Cохранить</button>
+          <button type="button" class="popup__close-button popup__close-button_type_edit hover"></button>
+        </form>
+      </div>
+      <!--popup 5 question-->
+      <div class="popup popup_type_add-question">
+        <div class="popup__overlay"></div>
+        <form name="form-container" class="popup__container popup__container_add" novalidate>
+          <h2 class="popup__title popup__title_type_question">Вы уверенны?</h2>
+          <button type="submit" class="popup__submit-button hover">Да</button>
+          <button type="button" class="popup__close-button popup__close-button_type_question hover"></button>
+        </form>
+      </div>
+
     </div>
   </body>
 </html>
