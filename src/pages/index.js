@@ -1,3 +1,5 @@
+import { cohortId,  token } from "../scripts/utils/constants"
+
 import Card from "../scripts/components/Card.js";
 import { initialCards } from "../scripts/utils/initialCards.js";
 import FormValidator from "../scripts/components/FormValidator";

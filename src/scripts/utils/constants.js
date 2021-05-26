@@ -1,3 +1,6 @@
+export const cohortId = 'cohort-24';
+export const token = 'f12d97c5-3bd7-4a64-bc24-17e685180ee0';
+
 export const validateConfig = {
   formSelector: ".popup__container",
   inputSelector: ".popup__input",
