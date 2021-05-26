@@ -1,4 +1,5 @@
-import { cohortId,  token } from "../scripts/utils/constants"
+
+import { cohortId,  headers  } from "../scripts/utils/constants"
 
 import Card from "../scripts/components/Card.js";
 import { initialCards } from "../scripts/utils/initialCards.js";
@@ -9,7 +10,6 @@ import Section from "../scripts/components/Section.js";
 import PopupWithImage from "../scripts/components/PopupWithImage";
 import PopupWithForm from "../scripts/components/PopupWithForm";
 import { UserInfo } from  "../scripts/components/UserInfo";
-
 
 const cardSelector = document.querySelector('.card-template');
 /* кнопка открытия профиля редактирования */
@@ -24,6 +24,45 @@ const popupContainerEdit = document.querySelector(".popup__container_type_edit-p
 const validatorEditProfile = new FormValidator(validateConfig, popupContainerEdit);
 const nameInput = document.querySelector('.popup__input_type-name');
 const jobInput = document.querySelector('.popup__input_type-job');
+
+
+    fetch(` https://mesto.nomoreparties.co/v1/${cohortId}/users/me`, headers)
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((err) => {
+            console.log('Ошибка. Запрос не выполнен: ', err);
+        });
+
+
+
+
+
+
+
+
+/*fetch('https://nomoreparties.co/v1/f12d97c5-3bd7-4a64-bc24-17e685180ee0/users/me ', {
+    method: 'POST',
+    body: JSON.stringify({
+        "name": "Jacques Cousteau",
+        "about": "Sailor, researcher",
+        "avatar": "https://pictures.s3.yandex.net/frontend-developer/ava.jpg",
+        "_id": "e20537ed11237f86bbb20ccb",
+        "cohort": "cohort0"
+    })
+}); */
+
+
+
+
+
+
+
+
+
 
 validatorAddCard.enableValidation();
 validatorEditProfile.enableValidation();
@@ -81,8 +120,7 @@ function addCard(item) {
     {handleCardClick: (name, link) => {
       popupImage.open({name, link});
       }}, '.card-template')
-  const cardElement = card.generateCard();
-return cardElement
+    return card.generateCard();
 };
 
 
