@@ -1,6 +1,6 @@
 
-import { cohortId,  headers  } from "../scripts/utils/constants"
-
+import { cohortId, options  } from "../scripts/utils/constants"
+import Api from "../scripts/components/Api"
 import Card from "../scripts/components/Card.js";
 import { initialCards } from "../scripts/utils/initialCards.js";
 import FormValidator from "../scripts/components/FormValidator";
@@ -11,6 +11,7 @@ import PopupWithImage from "../scripts/components/PopupWithImage";
 import PopupWithForm from "../scripts/components/PopupWithForm";
 import { UserInfo } from  "../scripts/components/UserInfo";
 
+const api = new Api(options)
 const cardSelector = document.querySelector('.card-template');
 /* кнопка открытия профиля редактирования */
 const openEditProfilePopupBtn = document.querySelector(".profile__edit-button");
@@ -24,19 +25,6 @@ const popupContainerEdit = document.querySelector(".popup__container_type_edit-p
 const validatorEditProfile = new FormValidator(validateConfig, popupContainerEdit);
 const nameInput = document.querySelector('.popup__input_type-name');
 const jobInput = document.querySelector('.popup__input_type-job');
-
-
-    fetch(` https://mesto.nomoreparties.co/v1/${cohortId}/users/me`, headers)
-        .then((res) => {
-            return res.json();
-        })
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((err) => {
-            console.log('Ошибка. Запрос не выполнен: ', err);
-        });
-
 
 
 
@@ -97,9 +85,23 @@ function openProfilePopup() {
 
 const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
     handlerSubmit: (options) => {
-        userInfo.setUserInfo(options);
-        popupEditProfile.close();
-    }
+        popupEditProfile.renderLoading(true)
+        api.setUserInfo({
+            name: name,
+            about: job
+        })
+            .then((userData) => {
+
+                userInfo.setUserInfo(userData)
+                popupEditProfile.close();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                popupEditProfile.renderLoading(false);
+            })
+    }, api
 });
 
  const popupAddCard = new PopupWithForm('.popup_type_add', {
@@ -124,6 +126,12 @@ function addCard(item) {
 };
 
 
+
+
+
+
+
+
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupImage.setEventListeners();
@@ -134,3 +142,4 @@ openAddCardPopupBtn.addEventListener("click", () => {
   validatorAddCard.removeInputError();
   popupAddCard.open()
 });
+

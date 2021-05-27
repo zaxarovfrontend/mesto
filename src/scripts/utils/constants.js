@@ -1,5 +1,5 @@
 export const cohortId = 'cohort-24';
-export const headers =  {
+export const options =  {
   headers: {
     authorization: 'f12d97c5-3bd7-4a64-bc24-17e685180ee0',
   }
