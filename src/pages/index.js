@@ -72,24 +72,10 @@ function openProfilePopup() {
 
 
 const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
-    handlerSubmit: (options) => {
-        popupEditProfile.renderLoading(true)
-        api.setUserInfo({
-            name: name,
-            about: job
-        })
-            .then((userData) => {
-
-                userInfo.setUserInfo(userData)
-                popupEditProfile.close();
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-            .finally(() => {
-                popupEditProfile.renderLoading(false);
-            })
-    }, api
+    handlerSubmit: (name, about) => {
+        userInfo.setUserInfo(name, about);
+        popupEditProfile.close();
+    }
 });
 
  const popupAddCard = new PopupWithForm('.popup_type_add', {
