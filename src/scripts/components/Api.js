@@ -4,7 +4,7 @@ export default class Api {
         this._url = options.url;
 
     }
-
+//Получил информациб о профиле с сервера
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
             headers: this._headers,
@@ -17,11 +17,10 @@ export default class Api {
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
             .catch((error) => {
-                alert('Http error!');
                 console.error(error);
             })
     }
-
+//Получил с сервера карточки
     getInitialCards() {
         return fetch(`${this._url}/cards`, {
             headers: this._headers,
@@ -33,6 +32,7 @@ export default class Api {
         })
     }
 
+//Добавил новую информацию о профиле на сервер
     editUserData(name,about)
 {
     return fetch(`${this._url}/users/me`, {
@@ -45,6 +45,28 @@ export default class Api {
     })
         .then(result => result.ok ? result.json() : Promise.reject(`Ошибка: ${result.status}`))
 }
+
+    addCard(name,link)
+    {
+        return fetch(`${this._url}/cards`, {
+            method: "POST",
+            headers: this._headers,
+            body: JSON.stringify({
+                name: name,
+                link: link
+            })
+        })
+            .then(result => result.ok ? result.json() : Promise.reject(`Ошибка: ${result.status}`))
+    }
+
+
+        cardDelete(cardId)  {
+            return fetch(`${this._url}/cards/${cardId}`, {
+             method: "DELETE",
+             headers: this._headers,
+     })
+         .then(result => result.ok ? result.json() : Promise.reject(`Ошибка: ${result.status}`))
+ }
 
 }
 

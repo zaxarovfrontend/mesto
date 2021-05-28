@@ -1,5 +1,5 @@
 
-import { cohortId } from "../scripts/utils/constants"
+import { cohortId ,popupDelete} from "../scripts/utils/constants"
 import Api from "../scripts/components/Api"
 import Card from "../scripts/components/Card.js";
 import { initialCards } from "../scripts/utils/initialCards.js";
@@ -10,6 +10,7 @@ import Section from "../scripts/components/Section.js";
 import PopupWithImage from "../scripts/components/PopupWithImage";
 import PopupWithForm from "../scripts/components/PopupWithForm";
 import { UserInfo } from  "../scripts/components/UserInfo";
+import {popupWithDelete} from "../scripts/components/popupWithDelete";
 
 const cardSelector = document.querySelector('.card-template');
 /* кнопка открытия профиля редактирования */
@@ -35,7 +36,7 @@ const api = new Api({
 
 //Получаение инфорации от профиля
 api.getUserInfo()
-    .then(data => userInfo.setUserInfo(data.name,data.about))
+    .then(data => userInfo.setUserInfo(data.name,data.about, data.id))
 //Получаение инфорации по карточкам
 api.getInitialCards()
     .then(data => {
@@ -89,22 +90,37 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
 
  const popupAddCard = new PopupWithForm('.popup_type_add', {
     handlerSubmit: (data) => {
-        const element = addCard({
-            name: data.title,
-            link: data.link
+        api.addCard(data.title,data.link)
+            .then(result => {
+                const element = addCard(result)
+                section.addItem(element, 'prepend');
         })
-      section.addItem(element, 'prepend');
       popupAddCard.close();
     }
 });
 
+const  popupDel = new popupWithDelete(popupDelete, {
+submitHandler: (cardId) => {
+api.cardDelete(popupDel.cardId().id)
+    .then(()=>{
+        popupDel.cardId().remove()
+        popupDel.close();
+    })
+}
 
-
+})
 function addCard(item) {
+    const userId = userInfo.getId()
   const card = new Card(item,
-    {handleCardClick: (name, link) => {
+    {
+        handleCardClick: (name, link) => {
       popupImage.open({name, link});
-      }}, '.card-template')
+      },
+      handleCardDelete: (cardId) => {
+       popupDel(cardId).open();
+      }
+
+      }, '.card-template', userId)
     return card.generateCard();
 };
 
@@ -113,6 +129,7 @@ function addCard(item) {
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupImage.setEventListeners();
+popupDel.setEventListeners();
 
 /* Кнопка "редактировать" открывает модалку */
 openEditProfilePopupBtn.addEventListener("click", openProfilePopup);

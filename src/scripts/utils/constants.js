@@ -11,3 +11,6 @@ export const validateConfig = {
   errorMessageNullLink: "Введите адрес сайта.",
   popupСontainerAdd: ".popup__container_add",
 };
+
+const popupDelete = ('popup_type_add-question');
+export {popupDelete};

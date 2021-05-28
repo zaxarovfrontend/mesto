@@ -1,8 +1,9 @@
 export class UserInfo {
 //Принимает в конструктор объект с селекторами двух элементов: элемента имени пользователя и элемента информации о себе.
-    constructor(name, jobName) {
+    constructor(name, jobName, avatar) {
       this._name = name;
       this._jobName = jobName;
+      this._avatar = avatar;
     }
 
 //публичный метод getUserInfo, который возвращает объект с данными пользователя.
@@ -10,12 +11,22 @@ export class UserInfo {
     getUserInfo() {
       const name = this._name.textContent;
       const jobName = this._jobName.textContent;
-      return {name, jobName};
+      const id = this._id;
+      return {name, jobName, id};
     };
 
     //публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
-    setUserInfo(name, about) {
+    setUserInfo(name, about, id) {
       this._name.textContent = name;
       this._jobName.textContent = about;
+      this._id = id;
     };
+
+    setAvatar(link) {
+    this._avatar.src = link;
+    }
+
+    getId() {
+    return this._id;
+    }
 }

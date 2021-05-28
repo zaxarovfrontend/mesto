@@ -12,6 +12,7 @@
   transition: opacity 0.9s linear 0.3s;
   top: 15px;
   right: 20px;
+  visibility: hidden;
   bottom: 0;
 }
 
