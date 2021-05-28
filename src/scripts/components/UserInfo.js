@@ -3,7 +3,6 @@ export class UserInfo {
     constructor(name, jobName) {
       this._name = name;
       this._jobName = jobName;
-      //this._avatar = document.querySelector(avatarSelector);
     }
 
 //публичный метод getUserInfo, который возвращает объект с данными пользователя.
@@ -14,14 +13,9 @@ export class UserInfo {
       return {name, jobName};
     };
 
-    // получил аватар
-   // setUserAvatar({avatar}) {
-    //    this._avatar.src = avatar;
-    //}
-
     //публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
-    setUserInfo(name, about) {
-      this._name.textContent = name;
-      this._jobName.textContent = about;
+    setUserInfo(options) {
+      this._name.textContent = options.name;
+      this._jobName.textContent = options.about;
     };
 }

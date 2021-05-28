@@ -33,11 +33,8 @@ const api = new Api({
     }
 });
 
-api.getUserInfo();
-
-
-
-
+api.getUserInfo()
+    .then((data => userInfo.setUserInfo(data)))
 
 
 validatorAddCard.enableValidation();
@@ -56,27 +53,29 @@ section.renderer();
 
 /* Переменая для текста работы куда будет добавляться новый текст */
 const newProfileTitle = document.querySelector(".profile__title"),
-    newProfileText = document.querySelector(".profile__text"), userInfo = new UserInfo(newProfileTitle, newProfileText);
+    newProfileText = document.querySelector(".profile__text"),
+    userInfo = new UserInfo(newProfileTitle, newProfileText);
 
 
 
 //Функция открытия попапа редактирования
 function openProfilePopup() {
-
     const getProfileData = userInfo.getUserInfo();
     nameInput.value = getProfileData.name;
     jobInput.value = getProfileData.jobName;
     validatorEditProfile.removeInputError();
     popupEditProfile.open();
 }
-
+userInfo.setUserInfo({});
 
 const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
-    handlerSubmit: (name, about) => {
-        userInfo.setUserInfo(name, about);
+    handlerSubmit: ({name,about}) => {
+        userInfo.setUserInfo({name,about});
         popupEditProfile.close();
     }
 });
+
+
 
  const popupAddCard = new PopupWithForm('.popup_type_add', {
     handlerSubmit: (data) => {
@@ -98,11 +97,6 @@ function addCard(item) {
       }}, '.card-template')
     return card.generateCard();
 };
-
-
-
-
-
 
 
 
