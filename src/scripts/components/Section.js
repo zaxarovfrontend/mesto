@@ -1,15 +1,14 @@
 import Card from "./Card";
 
 export default class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._renderedItems = items;
+  constructor({ renderer }, containerSelector) {
     this._container = document.querySelector(containerSelector);
     this._renderer = renderer;
   }
 
   // рендер карточек (перебор массива с карточками)
-  renderer () {
-    this._renderedItems.forEach((item) => {
+  renderer (data) {
+    data.forEach((item) => {
       this._renderer(item);
     });
   }

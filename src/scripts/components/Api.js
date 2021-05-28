@@ -22,7 +22,29 @@ export default class Api {
             })
     }
 
+    getInitialCards() {
+        return fetch(`${this._url}/cards`, {
+            headers: this._headers,
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+        })
+    }
 
+    editUserData(name,about)
+{
+    return fetch(`${this._url}/users/me`, {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+            name: name,
+            about: about
+        })
+    })
+        .then(result => result.ok ? result.json() : Promise.reject(`Ошибка: ${result.status}`))
 }
 
+}
 

@@ -33,8 +33,14 @@ const api = new Api({
     }
 });
 
+//Получаение инфорации от профиля
 api.getUserInfo()
-    .then((data => userInfo.setUserInfo(data)))
+    .then(data => userInfo.setUserInfo(data.name,data.about))
+//Получаение инфорации по карточкам
+api.getInitialCards()
+    .then(data => {
+  section.renderer(data)
+})
 
 
 validatorAddCard.enableValidation();
@@ -43,11 +49,12 @@ validatorEditProfile.enableValidation();
 const popupImage = new PopupWithImage('.popup_type_image');
 
 // создание нового элеменита карточки. Где мы из массива берем ссылку, название картинки и альт.
-const section = new Section({ items:initialCards, renderer: (item) => {
+const section = new Section({
+        renderer: (item) => {
         const card = addCard(item);
         section.addItem(card, 'append');
     },}, '.cards');
-section.renderer();
+
 
 
 
@@ -66,12 +73,15 @@ function openProfilePopup() {
     validatorEditProfile.removeInputError();
     popupEditProfile.open();
 }
-userInfo.setUserInfo({});
+
 
 const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
-    handlerSubmit: ({name,about}) => {
-        userInfo.setUserInfo({name,about});
-        popupEditProfile.close();
+    handlerSubmit: (data) => {
+        api.editUserData(data.name, data.job)
+            .then(result => {
+                userInfo.setUserInfo(result.name,result.about);
+                popupEditProfile.close();
+        })
     }
 });
 
