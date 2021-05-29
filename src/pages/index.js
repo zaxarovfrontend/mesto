@@ -25,6 +25,7 @@ const popupContainerEdit = document.querySelector(".popup__container_type_edit-p
 const validatorEditProfile = new FormValidator(validateConfig, popupContainerEdit);
 const nameInput = document.querySelector('.popup__input_type-name');
 const jobInput = document.querySelector('.popup__input_type-job');
+const popupAvatarEdit = document.querySelector('.profile__edit-button-avatar');
 
 const api = new Api({
     url: `https://mesto.nomoreparties.co/v1/${cohortId}`,
@@ -34,6 +35,11 @@ const api = new Api({
     }
 });
 
+const popupAvatar = new PopupWithForm('.popup_type_avatar-update', {
+    handlerSubmit: (data) => {
+        console.log(data);
+    }
+})
 
 
 validatorAddCard.enableValidation();
@@ -96,14 +102,12 @@ const  popupDel = new popupWithDelete(popupDelete, {
 submitHandler: (cardId) => {
     api.cardDelete(cardId)
         .then((data)=>{
-            popupDel.element.remove()
+            popupDel.cardElement.remove()
             popupDel.close();
         })
 }
 
 })
-
-
 
 function addCard(item) {
     const userId = userInfo.getId()
@@ -112,9 +116,9 @@ function addCard(item) {
         handleCardClick: (name, link, likes) => {
       popupImage.open({name, link, likes});
       },
-      handleCardDelete: (cardId) => {
-       //popupDel(cardId).open();
-      },
+        handleCardDelete: (cardId, elem) => {
+            popupDel.open(cardId, elem);
+        },
         handleCardLike: (cardId) => {
             api.setLike(cardId)
                 .then(({likes}) => {
@@ -148,7 +152,7 @@ api.getInitialCards()
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupImage.setEventListeners();
-//popupDel.setEventListeners();
+popupDel.setEventListeners();
 
 /* Кнопка "редактировать" открывает модалку */
 openEditProfilePopupBtn.addEventListener("click", openProfilePopup);
@@ -157,3 +161,6 @@ openAddCardPopupBtn.addEventListener("click", () => {
   popupAddCard.open()
 });
 
+popupAvatarEdit.addEventListener('click', () => {
+    popupAvatar.open();
+})

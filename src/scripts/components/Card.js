@@ -3,7 +3,7 @@ export default class Card {
   constructor({name, link, owner, _id, likes}, {
     handleCardClick,
     handleCardDislike,
-    handleCardLike
+    handleCardLike, handleCardDelete
   }, cardSelector, userId) {
     this._templateElement = document.querySelector(cardSelector);
     this._element = this._getTemplate();
@@ -21,6 +21,7 @@ export default class Card {
     this._userId = userId;
     this._handleCardDislike = handleCardDislike;
     this._handleCardLike = handleCardLike;
+    this._handleCardDelete = handleCardDelete;
   }
 
   _getTemplate() {
@@ -38,9 +39,8 @@ export default class Card {
       } else {
         this._likeCard();
       }
-
     });
-    this._element.querySelector(this._cardDelete).addEventListener("click", this._deleteCard);
+    this._element.querySelector(this._cardDelete).addEventListener("click", () => this._deleteCard());
   }
 
   generateCard() {
@@ -78,7 +78,7 @@ export default class Card {
   }
 
   _deleteCard() {
-    this._handleCardDelete(this._element);
+    this._handleCardDelete(this._id, this._element);
   }
 }
 

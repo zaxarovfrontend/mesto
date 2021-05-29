@@ -5,18 +5,20 @@ constructor(popup, {submitHandler}) {
     super(popup);
     this._submitHandler = submitHandler;
 }
- open(cardId) {
+ open(cardId, element) {
      super.open();
      this._cardId = cardId;
+     this.cardElement = element;
  }
 
  setEventListeners() {
      super.setEventListeners();
-     this._popup.addEventListener('submit', (evt) => {
+     this.element.addEventListener('submit', (evt) => {
          evt.preventDefault()
-         this._submitHandler()
+         this._submitHandler(this._cardId);
      })
  }
+
    cardId() {
     return this._cardId;
    }

@@ -59,7 +59,6 @@ export default class Api {
             .then(result => result.ok ? result.json() : Promise.reject(`Ошибка: ${result.status}`))
     }
 
-
     cardDelete(cardId) {
         return fetch(`${this._url}/cards/${cardId}`, {
             method: "DELETE",
@@ -67,6 +66,7 @@ export default class Api {
         })
             .then(result => result.ok ? result.json() : Promise.reject(`Ошибка: ${result.status}`))
     }
+
 
     setAvatar({avatar}) {
         return fetch(`${this._url}/users/me/avatar`, {

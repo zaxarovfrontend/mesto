@@ -12,5 +12,5 @@ export const validateConfig = {
   popupСontainerAdd: ".popup__container_add",
 };
 
-const popupDelete = ('popup_type_add-question');
+const popupDelete = ('.popup_type_add-question');
 export {popupDelete};
