@@ -1,5 +1,6 @@
 import Card from "./Card";
-
+//Укласса Section нет своей разметки.
+// Он получает разметку через функцию-колбэк и вставляет её в контейнер.
 export default class Section {
   constructor({ renderer }, containerSelector) {
     this._container = document.querySelector(containerSelector);

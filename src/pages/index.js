@@ -34,14 +34,6 @@ const api = new Api({
     }
 });
 
-//Получаение инфорации от профиля
-api.getUserInfo()
-    .then(data => userInfo.setUserInfo(data.name,data.about, data.id))
-//Получаение инфорации по карточкам
-api.getInitialCards()
-    .then(data => {
-  section.renderer(data)
-})
 
 
 validatorAddCard.enableValidation();
@@ -98,35 +90,58 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
       popupAddCard.close();
     }
 });
-/*
+
 //Попап удаления карточки
 const  popupDel = new popupWithDelete(popupDelete, {
 submitHandler: (cardId) => {
-api.cardDelete(popupDel.cardId().id)
-    .then(()=>{
-        popupDel.cardId().remove()
-        popupDel.close();
-    })
+    api.cardDelete(cardId)
+        .then((data)=>{
+            popupDel.element.remove()
+            popupDel.close();
+        })
 }
 
 })
 
- */
+
 
 function addCard(item) {
     const userId = userInfo.getId()
   const card = new Card(item,
     {
-        handleCardClick: (name, link) => {
-      popupImage.open({name, link});
+        handleCardClick: (name, link, likes) => {
+      popupImage.open({name, link, likes});
       },
       handleCardDelete: (cardId) => {
        //popupDel(cardId).open();
-      }
+      },
+        handleCardLike: (cardId) => {
+            api.setLike(cardId)
+                .then(({likes}) => {
+                    card._likes = likes;
+                    card.updateLikeCount();
+                })
+      },
+        handleCardDislike: (cardId) => {
+            api.removeLike(cardId)
+                .then(({likes}) => {
+                    card._likes = likes;
+                    card.updateLikeCount();
+                })
+        }
 
       }, '.card-template', userId)
     return card.generateCard();
 };
+
+//Получаение инфорации от профиля
+api.getUserInfo()
+    .then(data => userInfo.setUserInfo(data.name, data.about, data._id))
+//Получаение инфорации по карточкам
+api.getInitialCards()
+    .then(data => {
+        section.renderer(data)
+    })
 
 
 
