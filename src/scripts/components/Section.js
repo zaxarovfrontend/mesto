@@ -6,7 +6,7 @@ export default class Section {
     this._renderer = renderer;
   }
 
-  // рендер карточек (перебор массива с карточками)
+  // Свойство renderer — это функция, которая отвечает за создание и отрисовку данных на странице.
   renderer (data) {
     data.forEach((item) => {
       this._renderer(item);
