@@ -1,15 +1,14 @@
-
-import { cohortId ,popupDelete} from "../scripts/utils/constants"
+import {cohortId, popupDelete} from "../scripts/utils/constants"
 import Api from "../scripts/components/Api"
 import Card from "../scripts/components/Card.js";
-import { initialCards } from "../scripts/utils/initialCards.js";
+import {initialCards} from "../scripts/utils/initialCards.js";
 import FormValidator from "../scripts/components/FormValidator";
-import { validateConfig } from "../scripts/utils/constants.js";
+import {validateConfig} from "../scripts/utils/constants.js";
 import "./index.css";
 import Section from "../scripts/components/Section.js";
 import PopupWithImage from "../scripts/components/PopupWithImage";
 import PopupWithForm from "../scripts/components/PopupWithForm";
-import { UserInfo } from  "../scripts/components/UserInfo";
+import {UserInfo} from "../scripts/components/UserInfo";
 import {popupWithDelete} from "../scripts/components/popupWithDelete";
 
 const cardSelector = document.querySelector('.card-template');
@@ -30,7 +29,6 @@ const avatarUploadContainer = document.querySelector('.popup_type_avatar-update'
 const validatorAvatarUpload = new FormValidator(validateConfig, avatarUploadContainer);
 
 
-
 const api = new Api({
     url: `https://mesto.nomoreparties.co/v1/${cohortId}`,
     headers: {
@@ -38,7 +36,6 @@ const api = new Api({
         'Content-Type': 'application/json',
     }
 });
-
 
 
 validatorAddCard.enableValidation();
@@ -49,12 +46,11 @@ const popupImage = new PopupWithImage('.popup_type_image');
 
 // создание нового элеменита карточки. Где мы из массива берем ссылку, название картинки и альт.
 const section = new Section({
-        renderer: (item) => {
+    renderer: (item) => {
         const card = addCard(item);
         section.addItem(card, 'append');
-    },}, '.cards');
-
-
+    },
+}, '.cards');
 
 
 /* Переменая для текста работы куда будет добавляться новый текст */
@@ -62,7 +58,6 @@ const newProfileTitle = document.querySelector(".profile__title"),
     newProfileText = document.querySelector(".profile__text"),
     newAvatar = document.querySelector(".profile__avatar"),
     userInfo = new UserInfo(newProfileTitle, newProfileText, newAvatar);
-
 
 
 //Функция открытия попапа редактирования
@@ -79,36 +74,34 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
     handlerSubmit: (data) => {
         api.editUserData(data.name, data.job)
             .then(result => {
-                userInfo.setUserInfo(result.name,result.about);
+                userInfo.setUserInfo(result.name, result.about);
                 popupEditProfile.close();
-        })
+            })
     }
 });
 
 
-
-
 //Попап добавления карточки
- const popupAddCard = new PopupWithForm('.popup_type_add', {
+const popupAddCard = new PopupWithForm('.popup_type_add', {
     handlerSubmit: (data) => {
-        api.addCard(data.title,data.link)
+        api.addCard(data.title, data.link)
             .then(result => {
                 const element = addCard(result)
                 section.addItem(element, 'prepend');
-        })
-      popupAddCard.close();
+            })
+        popupAddCard.close();
     }
 });
 
 //Попап удаления карточки
-const  popupDel = new popupWithDelete(popupDelete, {
-submitHandler: (cardId) => {
-    api.cardDelete(cardId)
-        .then((data)=>{
-            popupDel.cardElement.remove()
-            popupDel.close();
-        })
-}
+const popupDel = new popupWithDelete(popupDelete, {
+    submitHandler: (cardId) => {
+        api.cardDelete(cardId)
+            .then((data) => {
+                popupDel.cardElement.remove()
+                popupDel.close();
+            })
+    }
 
 })
 
@@ -174,8 +167,8 @@ popupAvatar.setEventListeners();
 /* Кнопка "редактировать" открывает модалку */
 openEditProfilePopupBtn.addEventListener("click", openProfilePopup);
 openAddCardPopupBtn.addEventListener("click", () => {
-  validatorAddCard.removeInputError();
-  popupAddCard.open()
+    validatorAddCard.removeInputError();
+    popupAddCard.open()
 });
 
 popupAvatarEdit.addEventListener('click', () => {
