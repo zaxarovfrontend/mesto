@@ -26,6 +26,10 @@ const validatorEditProfile = new FormValidator(validateConfig, popupContainerEdi
 const nameInput = document.querySelector('.popup__input_type-name');
 const jobInput = document.querySelector('.popup__input_type-job');
 const popupAvatarEdit = document.querySelector('.profile__edit-button-avatar');
+const avatarUploadContainer = document.querySelector('.popup_type_avatar-update');
+const validatorAvatarUpload = new FormValidator(validateConfig, avatarUploadContainer);
+
+
 
 const api = new Api({
     url: `https://mesto.nomoreparties.co/v1/${cohortId}`,
@@ -35,15 +39,11 @@ const api = new Api({
     }
 });
 
-const popupAvatar = new PopupWithForm('.popup_type_avatar-update', {
-    handlerSubmit: (data) => {
-        console.log(data);
-    }
-})
 
 
 validatorAddCard.enableValidation();
 validatorEditProfile.enableValidation();
+validatorAvatarUpload.enableValidation();
 
 const popupImage = new PopupWithImage('.popup_type_image');
 
@@ -60,7 +60,8 @@ const section = new Section({
 /* Переменая для текста работы куда будет добавляться новый текст */
 const newProfileTitle = document.querySelector(".profile__title"),
     newProfileText = document.querySelector(".profile__text"),
-    userInfo = new UserInfo(newProfileTitle, newProfileText);
+    newAvatar = document.querySelector(".profile__avatar"),
+    userInfo = new UserInfo(newProfileTitle, newProfileText, newAvatar);
 
 
 
@@ -83,6 +84,8 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
         })
     }
 });
+
+
 
 
 //Попап добавления карточки
@@ -109,38 +112,52 @@ submitHandler: (cardId) => {
 
 })
 
+const popupAvatar = new PopupWithForm('.popup_type_avatar-update', {
+    handlerSubmit: ({link}) => {
+        api.updateAvatar(link)
+            .then(({avatar}) => {
+                userInfo.setAvatar(link);
+                popupAvatar.close();
+            });
+    }
+})
+
+
 function addCard(item) {
     const userId = userInfo.getId()
-  const card = new Card(item,
-    {
-        handleCardClick: (name, link, likes) => {
-      popupImage.open({name, link, likes});
-      },
-        handleCardDelete: (cardId, elem) => {
-            popupDel.open(cardId, elem);
-        },
-        handleCardLike: (cardId) => {
-            api.setLike(cardId)
-                .then(({likes}) => {
-                    card._likes = likes;
-                    card.updateLikeCount();
-                })
-      },
-        handleCardDislike: (cardId) => {
-            api.removeLike(cardId)
-                .then(({likes}) => {
-                    card._likes = likes;
-                    card.updateLikeCount();
-                })
-        }
-
-      }, '.card-template', userId)
+    const card = new Card(item,
+        {
+            handleCardClick: (name, link) => {
+                popupImage.open({name, link});
+            },
+            handleCardDelete: (cardId, elem) => {
+                popupDel.open(cardId, elem);
+            },
+            handleCardLike: (cardId) => {
+                api.setLike(cardId)
+                    .then(({likes}) => {
+                        card._likes = likes;
+                        card.updateLikeCount();
+                    })
+            },
+            handleCardDislike: (cardId) => {
+                api.removeLike(cardId)
+                    .then(({likes}) => {
+                        card._likes = likes;
+                        card.updateLikeCount();
+                    })
+            }
+        }, '.card-template', userId)
     return card.generateCard();
 };
 
 //Получаение инфорации от профиля
 api.getUserInfo()
-    .then(data => userInfo.setUserInfo(data.name, data.about, data._id))
+    .then((data) => {
+        userInfo.setUserInfo(data.name, data.about, data._id)
+        userInfo.setAvatar(data.avatar);
+    })
+
 //Получаение инфорации по карточкам
 api.getInitialCards()
     .then(data => {
@@ -148,11 +165,11 @@ api.getInitialCards()
     })
 
 
-
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
 popupImage.setEventListeners();
 popupDel.setEventListeners();
+popupAvatar.setEventListeners();
 
 /* Кнопка "редактировать" открывает модалку */
 openEditProfilePopupBtn.addEventListener("click", openProfilePopup);
@@ -162,5 +179,6 @@ openAddCardPopupBtn.addEventListener("click", () => {
 });
 
 popupAvatarEdit.addEventListener('click', () => {
+    validatorAvatarUpload.removeInputError();
     popupAvatar.open();
 })

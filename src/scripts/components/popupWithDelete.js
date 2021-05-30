@@ -15,11 +15,9 @@ constructor(popup, {submitHandler}) {
      super.setEventListeners();
      this.element.addEventListener('submit', (evt) => {
          evt.preventDefault()
+         this._renderLoading();
          this._submitHandler(this._cardId);
      })
  }
 
-   cardId() {
-    return this._cardId;
-   }
 }

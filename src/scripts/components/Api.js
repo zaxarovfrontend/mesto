@@ -68,19 +68,6 @@ export default class Api {
     }
 
 
-    setAvatar({avatar}) {
-        return fetch(`${this._url}/users/me/avatar`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-                avatar: avatar
-            })
-        })
-            .then(result => result.ok ? result.json() : Promise.reject(`Ошибка: ${result.status}`))
-    }
-
-
-
     setLike(cardId) {
         return fetch(`${this._url}/cards/likes/${cardId}`,
             {
@@ -99,5 +86,14 @@ export default class Api {
             .then(result => result.ok ? result.json() : Promise.reject(`Ошибка: ${result.status}`))
     }
 
-
+    updateAvatar(link) {
+        return fetch(`${this._url}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: link,
+            })
+        })
+            .then(result => result.ok ? result.json() : Promise.reject(`Ошибка: ${result.status}`))
+    }
 }

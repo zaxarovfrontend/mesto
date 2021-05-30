@@ -3,7 +3,7 @@ export default class Card {
   constructor({name, link, owner, _id, likes}, {
     handleCardClick,
     handleCardDislike,
-    handleCardLike, handleCardDelete
+    handleCardLike, handleCardDelete,
   }, cardSelector, userId) {
     this._templateElement = document.querySelector(cardSelector);
     this._element = this._getTemplate();
