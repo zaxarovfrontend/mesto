@@ -1,6 +1,6 @@
 import Popup from "./Popup";
 
-export class popupWithDelete extends Popup {
+export class PopupWithDelete extends Popup {
     constructor(popup, {submitHandler}) {
         super(popup);
         this._submitHandler = submitHandler;
@@ -15,10 +15,9 @@ export class popupWithDelete extends Popup {
     setEventListeners() {
         super.setEventListeners();
         this.element.addEventListener('submit', (evt) => {
-            evt.preventDefault()
-            this._renderLoading();
+            evt.preventDefault();
+            this.renderLoading();
             this._submitHandler(this._cardId);
         })
     }
-
 }

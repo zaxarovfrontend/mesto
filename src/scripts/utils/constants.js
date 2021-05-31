@@ -1,3 +1,5 @@
+import PopupWithImage from "../components/PopupWithImage";
+
 export const cohortId = 'cohort-24';
 
 export const validateConfig = {

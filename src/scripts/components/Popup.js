@@ -20,14 +20,6 @@ export default class Popup {
         }
     }
 
-    _renderLoading() {
-        const prevTextBtn = this.element.querySelector('button').textContent;
-        this.element.querySelector('button').textContent = 'Сохранение...';
-
-        setTimeout(() => {
-            this.element.querySelector('button').textContent = prevTextBtn;
-        }, 1500)
-    }
 
     setEventListeners() {
         this.element.addEventListener('click', (evt) => {

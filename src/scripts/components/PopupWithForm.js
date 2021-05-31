@@ -8,6 +8,15 @@ export default class PopupWithForm extends Popup {
         this._handlerSubmit = handlerSubmit;
     }
 
+        renderLoading() {
+        const prevTextBtn = this.element.querySelector('button').textContent;
+        this.element.querySelector('button').textContent = 'Сохранение...';
+
+        setTimeout(() => {
+            this.element.querySelector('button').textContent = prevTextBtn;
+        }, 1500)
+    };
+
     _getInputValues() {
         this._values = {};
         this._inputs = this._form.querySelectorAll('.popup__input')
@@ -19,7 +28,7 @@ export default class PopupWithForm extends Popup {
         super.setEventListeners();
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._renderLoading();
+            this.renderLoading();
             this._handlerSubmit(this._getInputValues());
         })
     }
@@ -28,4 +37,5 @@ export default class PopupWithForm extends Popup {
         super.close();
         this._form.reset();
     }
+
 }

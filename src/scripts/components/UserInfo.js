@@ -12,7 +12,8 @@ export class UserInfo {
         const name = this._name.textContent;
         const jobName = this._jobName.textContent;
         const id = this._id;
-        return {name, jobName, id};
+        const avatar = this._avatar;
+        return {name, jobName, id, avatar };
     };
 
     //публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
