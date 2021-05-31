@@ -21,6 +21,8 @@ export default class Card {
         this._handleCardDislike = handleCardDislike;
         this._handleCardLike = handleCardLike;
         this._handleCardDelete = handleCardDelete;
+        this._cardElement =  this._element.querySelector(this._cardImage);
+        this._cardLikeElement =  this._element.querySelector(this._cardLike);
     }
 
     _getTemplate() {
@@ -29,8 +31,8 @@ export default class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector(this._cardImage).addEventListener("click", () => this._openFullImage(this._name, this._image));
-        this._element.querySelector(this._cardLike).addEventListener("click", () => {
+        this._cardElement.addEventListener("click", () => this._openFullImage(this._name, this._image));
+        this._cardLikeElement.addEventListener("click", () => {
             const trigger = this._element.querySelector(this._cardLike).classList.contains("card__like-button_active");
 
             if (trigger) {
@@ -45,8 +47,8 @@ export default class Card {
     generateCard() {
         this._setEventListeners();
         this.updateLikeCount();
-        this._element.querySelector(this._cardImage).src = this._image;
-        this._element.querySelector(this._cardImage).alt = this._name;
+        this._cardElement.src = this._image;
+        this._cardElement.alt = this._name;
         this._element.querySelector(this._cardTitle).textContent = this._name;
         if (this._userId === this._owner) {
             this._element.querySelector(this._cardDelete).classList.add('card__delete_active');

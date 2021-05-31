@@ -16,7 +16,6 @@ export class PopupWithDelete extends Popup {
         super.setEventListeners();
         this.element.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this.renderLoading();
             this._submitHandler(this._cardId);
         })
     }

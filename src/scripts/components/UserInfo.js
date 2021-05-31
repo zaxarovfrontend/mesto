@@ -18,13 +18,13 @@ export class UserInfo {
 
     //публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
     setUserInfo(name, about, id) {
-        this._name.textContent = name;
-        this._jobName.textContent = about;
-        this._id = id;
+        if (name) { this._name.textContent = name;}
+        if (about) {this._jobName.textContent = about;}
+        if (id) {this._id = id;}
     };
 
     setAvatar(link) {
-        this._avatar.src = link;
+        if (link) {this._avatar.src = link;}
     }
 
     getId() {
