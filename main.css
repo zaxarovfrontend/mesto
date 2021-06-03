@@ -708,9 +708,8 @@ template {
     display: flex;
     flex-direction: column;
     width: 22px;
-
+    height: 35px;
     margin-top: 0;
-    border: solid 1px red;
 }
 .card__like-info {
     font-style: normal;
