@@ -391,11 +391,19 @@ template {
 }
 
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 800px) {
   .body{
-   max-width: 880px;
+   max-width: 780px;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .body{
+    max-width: 880px;
+  }
+}
+
+
 .header {
   min-width: 320px;
   padding-top: 28px;
@@ -453,9 +461,9 @@ template {
 }
 
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 800px) {
   .profile {
-    max-width: 880px;
+    max-width: 800px;
     margin: 6px 0 43px 0;
     flex-direction: row;
     align-items: center;
@@ -492,7 +500,7 @@ template {
   text-align: start;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 800px) {
   .profile__title  {
     font-size: 42px;
     line-height: 51px;
@@ -517,7 +525,7 @@ template {
   }
 
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 800px) {
     .profile__text {
       font-size: 18px;
       line-height: 22px;
@@ -540,6 +548,7 @@ template {
   transition: opacity 0.4s linear 0.3s;
   outline: none;
   margin-bottom: 14px;
+  justify-self: center;
 }
 
 @media screen and (min-width: 1024px) {
@@ -596,7 +605,7 @@ template {
 
 
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 800px) {
   .profile__add-button {
     width: 150px;
     margin-left: auto;
@@ -608,32 +617,36 @@ template {
   display: flex;
   min-width: 189px;
 }
+
 .profile__info-block {
     position: relative;
 }
-@media screen and (min-width: 1024px) {
-  .cards {
-   min-width: 880px;
+.cards {
    display: grid;
-   grid-template-columns: repeat(3, 282px);
-   grid-template-rows: repeat(3, minmax(content));
+   grid-template-columns: 1fr;
    gap: 20px 17px;
-   justify-content: center;
+    margin: 0 auto;
   }
+
+@media screen and (min-width: 800px) {
+    .cards  {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .cards  {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 .card {
   display: flex;
   justify-content: center;
-  margin: 2px 19px 20px 19px;
   min-width: 282px;
   min-height: 361px;
+  overflow: hidden;
 }
 
-@media screen and (min-width: 900px) {
-  .card {
-    margin: 2px 19px 20px 19px;
-  }
-}
 .card__group-container {
   display: flex;
   width: 246px;
@@ -668,7 +681,7 @@ template {
   background-image: url(fe17a515669479b1e649.svg);
 }
 .card__image {
-  width: 282px;
+  width: 100%;
   height: 282px;
   cursor: pointer;
 }
