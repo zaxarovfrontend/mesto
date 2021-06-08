@@ -391,19 +391,11 @@ template {
 }
 
 
-@media screen and (min-width: 800px) {
-  .body{
-   max-width: 780px;
-  }
-}
-
 @media screen and (min-width: 1024px) {
   .body{
-    max-width: 880px;
+   max-width: 880px;
   }
 }
-
-
 .header {
   min-width: 320px;
   padding-top: 28px;
@@ -461,9 +453,9 @@ template {
 }
 
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1024px) {
   .profile {
-    max-width: 800px;
+    max-width: 880px;
     margin: 6px 0 43px 0;
     flex-direction: row;
     align-items: center;
@@ -500,7 +492,7 @@ template {
   text-align: start;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1024px) {
   .profile__title  {
     font-size: 42px;
     line-height: 51px;
@@ -525,7 +517,7 @@ template {
   }
 
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 1024px) {
     .profile__text {
       font-size: 18px;
       line-height: 22px;
@@ -548,7 +540,6 @@ template {
   transition: opacity 0.4s linear 0.3s;
   outline: none;
   margin-bottom: 14px;
-  justify-self: center;
 }
 
 @media screen and (min-width: 1024px) {
@@ -605,7 +596,7 @@ template {
 
 
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1024px) {
   .profile__add-button {
     width: 150px;
     margin-left: auto;
@@ -617,40 +608,30 @@ template {
   display: flex;
   min-width: 189px;
 }
-
 .profile__info-block {
     position: relative;
 }
-.cards {
-   display: grid;
-   grid-template-columns: 1fr;
-   gap: 20px 17px;
-    margin: 0 auto;
-  }
-
-@media screen and (min-width: 500px) {
-    .cards  {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
 @media screen and (min-width: 1024px) {
-    .cards  {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+  .cards {
+   min-width: 880px;
+   display: grid;
+   grid-template-columns: repeat(3, 282px);
+   grid-template-rows: repeat(3, minmax(content));
+   gap: 20px 17px;
+   justify-content: center;
+  }
 }
 .card {
   display: flex;
-  justify-self: center;
-  width: 97%;
+  justify-content: center;
+  margin: 2px 19px 20px 19px;
+  min-width: 282px;
   min-height: 361px;
-  overflow: hidden;
 }
 
-
-@media screen and (min-width: 470px) {
+@media screen and (min-width: 900px) {
   .card {
-    width: 100%;
+    margin: 2px 19px 20px 19px;
   }
 }
 .card__group-container {
@@ -660,32 +641,6 @@ template {
   justify-content: space-between;
   align-items: center;
 }
-
-@media screen and (min-width: 470px) {
-  .card__group-container  {
-    width: 250px;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .card__group-container  {
-    width: 254px;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .card__group-container  {
-    width: 332px;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .card__group-container  {
-    width: 242px;
-  }
-}
-
-
 .card__group {
   background-color: #ffffff;
   min-width: 282px;
@@ -697,24 +652,26 @@ template {
 
 .card__like-button {
   background-image: url(87ed371465c7a6a1cd01.svg);
-  width: 23px;
+  width: 22px;
   height: 19px;
   background-position: center;
-  border: none;
+  border: hidden;
+  align-self: center;
+  margin-left: auto;
   outline: none;
   cursor:pointer;
   background-repeat: no-repeat;
   background-color: transparent;
+  transition: 0.1s linear .1s;
 }
 .card__like-button_active {
   background-image: url(fe17a515669479b1e649.svg);
 }
 .card__image {
-  width: 100%;
+  width: 282px;
   height: 282px;
   cursor: pointer;
 }
-
 .card__title {
   font-weight: 900;
   font-size: 24px;
@@ -750,6 +707,9 @@ template {
 .card__like_group {
     display: flex;
     flex-direction: column;
+    width: 22px;
+    height: 35px;
+    margin-top: 0;
 }
 .card__like-info {
     font-style: normal;
@@ -758,7 +718,6 @@ template {
     line-height: 16px;
     text-align: center;
     color: #000000;
-    align-items: center;
 }
 .card__delete_active {
    visibility: visible;
