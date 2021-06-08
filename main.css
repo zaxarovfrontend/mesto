@@ -628,7 +628,7 @@ template {
   min-height: 361px;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1024px) {
   .card {
     margin: 0;
   }
@@ -710,6 +710,8 @@ template {
     text-align: center;
     color: #000000;
     padding-top: 3px;
+    padding-bottom: 0;
+    margin: 0;
 }
 .card__delete_active {
    visibility: visible;
