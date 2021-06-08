@@ -628,11 +628,6 @@ template {
   min-height: 361px;
 }
 
-@media screen and (min-width: 900px) {
-  .card {
-    margin: 2px 0 20px 0;
-  }
-}
 .card__group-container {
   display: flex;
   width: 246px;
@@ -704,9 +699,6 @@ template {
 .card__like_group {
     display: flex;
     flex-direction: column;
-    width: 22px;
-    height: 35px;
-    margin-top: 0;
 }
 .card__like-info {
     font-size: 13px;
