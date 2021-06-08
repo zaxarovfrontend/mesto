@@ -709,9 +709,6 @@ template {
     width: 22px;
     height: 35px;
     margin-top: 0;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
 }
 .card__like-info {
     font-style: normal;
@@ -720,6 +717,7 @@ template {
     line-height: 16px;
     text-align: center;
     color: #000000;
+    display: block;
 }
 .card__delete_active {
    visibility: visible;
