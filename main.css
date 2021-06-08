@@ -628,6 +628,11 @@ template {
   min-height: 361px;
 }
 
+@media screen and (min-width: 900px) {
+  .card {
+    margin: 0;
+  }
+}
 .card__group-container {
   display: flex;
   width: 246px;
