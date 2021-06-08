@@ -711,13 +711,10 @@ template {
     margin-top: 0;
 }
 .card__like-info {
-    font-style: normal;
-    font-weight: normal;
     font-size: 13px;
-    line-height: 16px;
     text-align: center;
     color: #000000;
-    display: block;
+    padding-top: 3px;
 }
 .card__delete_active {
    visibility: visible;
