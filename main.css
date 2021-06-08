@@ -710,6 +710,9 @@ template {
     width: 22px;
     height: 35px;
     margin-top: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 .card__like-info {
     font-style: normal;
