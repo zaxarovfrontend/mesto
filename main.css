@@ -616,7 +616,6 @@ template {
    min-width: 880px;
    display: grid;
    grid-template-columns: repeat(3, 282px);
-   grid-template-rows: repeat(3, minmax(content));
    gap: 20px 17px;
    justify-content: center;
   }
@@ -624,14 +623,14 @@ template {
 .card {
   display: flex;
   justify-content: center;
-  margin: 2px 19px 20px 19px;
+  margin: 2px 0 20px 0;
   min-width: 282px;
   min-height: 361px;
 }
 
 @media screen and (min-width: 900px) {
   .card {
-    margin: 2px 19px 20px 19px;
+    margin: 2px 0 20px 0;
   }
 }
 .card__group-container {
